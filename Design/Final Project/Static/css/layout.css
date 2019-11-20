@@ -1,8 +1,7 @@
 .header-wrapper{
     height: 680px;
     background: url("../images/main-bg.png");
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-size: 100% 628px;
 }
 .header-wrapper-main{
     width: 1170px;
@@ -21,31 +20,53 @@ img.logo{
 
 .nav-menu-w-login{
     float: right;
+    display: inline-block;
 }
 
 .nav-menu{
     float: left;
 }
 
-a.login{
-    margin-top: 27px;
-    float: right;
-    margin-left: 17px;
+nav.menu-list{
+    padding-top:42px;
 }
 
-nav{
-    padding-top: 44px;
-}
 .nav-menu ul li{
-    
     list-style: none;
     color: white;
     display: inline;
-    padding-left: 43px;
+    padding-left: 40px;
+}
+.nav-menu ul li:first-child{
+    padding-left: 0px;
+}
+.cart-and-login{
+    float: right;
+    padding-top:27px
 }
 
-.login{
-    padding-top: 27px;
+.cart-and-login ul li{
+    list-style: none;
+    color: white;
+    display: inline;
+    padding-left: 23px;
+    padding-bottom: 27px;
+}
+
+.icon-angle-down{
+    padding-left: 10px;
+}
+
+a.login{
+    width=95px;
+    height: 41px;
+    background: #86919d;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 h1.heading{
@@ -53,22 +74,30 @@ h1.heading{
     padding-top: 220px;
     font-size: 62px;
     padding-left:100px;
+    font-family: "Roboto";
+    font-weight: bold;
+    line-height: 1.258;
+    text-align: center;
+    width: 831px;
+    height: 139px;
 }
 
 p.heading-para{
     color: white;
     padding-top: 46px;
     padding-bottom: 41px;
-    padding-left:300px
+    padding-left:309px;
+    font-size: 20px;
 }
 
 a.view-all{
-    width: 125px;
-    height: 25px;
+    width: 197px;
+    height: 62px;
     background: #86919d;
-    padding: 10px;
+    padding: 20px;
     text-align: center;
-    border-radius: 5px;
+    font-size: 18px;
+    border-radius: 4px;
     color: white;
     font-weight: bold;
     margin-right: 15px;
@@ -87,34 +116,43 @@ a.view-all:hover{
 
 .search{
     margin-top: 77px;
-    height: 72px;
-    background-color: black;
+    height: 70px;
+    background-color:  white;
+    border-radius: 3px;
 }
 
 .entire-site {
-    position: relative;
-    display: inline-block;
-    background-color: #f9f9f9;
-    width: 170px;
+    float: left;
+    background-color:white;
+    width: 165px;
     text-align: center;
     border-style: solid;
-    border-width: 5px;
-    border: red;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding: 12px 16px;
-    z-index: 1;
+    border-width: 0px 2px 0px 0px;
+    border-radius: 3px 0px 0px 0px;
+    border-color:  #f9f9f9;;
+    padding-right: 12px;
+    height: 70px;
   }
 
-  .entire-site:hover .dropdown-content {
-    display: block;
+  .search-field input{
+      float: left;
+      width: 800px;
+      background-color:white;
+      height: 70px;
+      border-style: solid;
+      border-width: 0px 2px 0px 0px;
+        border-color:  #f9f9f9;;
+        background-image: url(../images/searchicon.png);
+        background-position: 29px 29px; 
+        background-repeat: no-repeat;
+        padding-left: 76px;
   }
+
+  .search-submit{
+    background-color: #2f8be6;
+    height: 70px;
+    width: 134x;
+}
 
   .filter-by{
       padding-top: 20px;
@@ -130,6 +168,11 @@ a.view-all:hover{
     font-weight: bold;
     margin-right: 15px;
     text-decoration: none;
+  }
+
+  .body-wrapper{
+      background-color: #f1f5f8;
+      height: 4249px;
   }
 
   .filter-title{
@@ -148,3 +191,4 @@ a.view-all:hover{
       width: 375px;
       height: 774px;
   }
+

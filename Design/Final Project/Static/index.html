@@ -7,30 +7,45 @@
         <link rel="stylesheet" type="text/css" href="css/reset.css">
         <link rel="stylesheet" type="text/css" href="css/layout.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" href="font-awesome/font-awesome/css/font-awesome.min.css">
     </head>
     <body> 
             <div class="header-wrapper">
                 <div class="header-wrapper-main">
                     <div class="header-logo-menu clearfix">
                             <img class="logo" src="images/logo.png">
-                        <div class="nav-menu-w-login">
+                        <div class="nav-menu-w-login clearfix">
                             <div class="nav-menu">
-                                <nav>
-                                    <ul class="nav-menu">
-                                        <li>Home</li>
+                                <nav class="menu-list">
+                                    <ul>
+                                        <li>Home<i class="icon-angle-down"></i></li>
                                         <li>All Items</li>
                                         <li>Freebies</li>
                                         <li>Premium</li>
                                         <li>Blog</li>
-                                        <li><i class="fas fa-search"></i></li>
                                     </ul>
                                 </nav>
                             </div>
-                                <a class="view-all login" href="#">Login</a>
+                            <div class="cart-and-login clearfix">
+                                <nav class="search-cart">
+                                    <ul>
+                                            <li>
+                                                    <img src="images/sep.png">
+                                            </li>
+                                        <li>
+                                            <i class="icon-search"></i>
+                                        </li>
+                                        <li>
+                                            <i class="icon-shopping-cart"></i>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                <a class="login" href="#">Login</a>
+                            </div>
                         </div>
                     </div>
                     <div class="heading-wrapper">
-                        <h1 class="heading">Most Selective Market of<br/>
+                        <h1 class="heading">Most Selective Market of
                         Digital Products for Creatives</h1>
                         <p class="heading-para">
                             Curatec Design Resources to Energize Your Creative Workflow
@@ -40,14 +55,20 @@
                             <a class="view-all" href="#">See Our Pricing</a>
                         </div>
                         <div class="search">
+                                <form>
                                   <div class="entire-site">
-                                        <span>Entire Site</span>
-                                        <div class="dropdown-content">
-                                          <p>Art</p>
-                                          <p>Music</p>
-                                        </div>
+                                        <p>Entire Site<i class="icon-angle-down"></i></p>
                                   </div> 
-                                
+                                  
+                                  <div class="search-field">
+                                    
+                                        <input type="text" placeholder="Search Your Keyword">
+                                  </div>
+                                  <div class=search-submit>
+                                        <input type="submit" value="Search">
+                                  </div>
+                                  </form>
+                                  
                         </div>
                         <div class="filter-by">
                             <div class="filter-title">
@@ -76,9 +97,18 @@
                                                         <button class="filter-button">Typography</button>
                                                  </li>
                             </ul>
+
+                        </div>
+                        <div class="product-cards">
+                            <div class="card">
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="body-wrapper">
+
             </div>
     </body>
 </html>

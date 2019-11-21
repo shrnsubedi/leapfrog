@@ -119,6 +119,7 @@ a.view-all:hover{
     height: 70px;
     background-color:  white;
     border-radius: 3px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .entire-site {
@@ -131,7 +132,8 @@ a.view-all:hover{
     border-radius: 3px 0px 0px 0px;
     border-color:  #f9f9f9;;
     padding-right: 12px;
-    height: 70px;
+    padding-top: 29px;
+    height: 41px;
   }
 
   .search-field input{
@@ -148,37 +150,43 @@ a.view-all:hover{
         padding-left: 76px;
   }
 
-  .search-submit{
-    background-color: #2f8be6;
+  .search-submit input{
+    width: 112px;
     height: 70px;
-    width: 134x;
+    background-color: #2f8be6;
+    padding: 0px 20px;
+    color: white;
+    font-size: 18px;
+    border-style: solid;
+    border-radius: 3px;
 }
 
   .filter-by{
       padding-top: 20px;
       display: inline;
   }
-
-  .filter-button{
-    background: #86919d;
+  a.filter-button{
+    background: #dae1e7;
     padding: 10px;
     text-align: center;
-    border-radius: 5px;
-    color: white;
-    font-weight: bold;
-    margin-right: 15px;
+    border-radius: 3px;
+    color: #4e4f4f;
+    margin-right: 5px;
     text-decoration: none;
-  }
-
-  .body-wrapper{
-      background-color: #f1f5f8;
-      height: 4249px;
   }
 
   .filter-title{
       float: left;
+      padding-right: 25px;
+      padding-top: 31px;
+      color: #a2adb8;
+  }
+
+  .filter-list{
+    margin-top: 31px;
   }
   .filter-list li{
+      
       list-style: none;
       display: inline;
   }
@@ -187,8 +195,527 @@ a.view-all:hover{
     background:#2f8be6;
   }
 
-  .card{
-      width: 375px;
-      height: 774px;
-  }
+  .body-wrapper{
+    background-color: #f1f5f8;
+}
 
+.body-wrapper-main{
+    width:1170px;
+    margin: 0 auto;
+}
+    .product-cards{
+        padding-top: 149px;
+    }
+   div.card{
+        width: 370px;
+        height: 502px;
+        box-shadow: 0 4px 8px 0 grey;
+        background-color: white;
+    }
+
+    .card-image{
+        
+        height: 280px;
+        width:370px;
+    }
+
+    .back-box{  
+        position: relative;
+        z-index: 10;
+    }
+
+    .front-box{
+        position: absolute;
+        display: none;
+        z-index: 20;
+        background: url(../images/product-mask.png);
+    }
+
+    .front-box ul{
+        z-index: 30;
+        position: absolute;
+        list-style: none;
+        display: inline;
+        top:50%;
+        bottom:50%;
+    }
+
+    .card-image:hover .front-box{
+        display: block;
+        position: absolute;
+    }
+    .container{
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .card-title{
+        padding-top: 28px;
+        padding-bottom: 24px;
+        font-size: 18px;
+        font-family: "Roboto";
+       /* color: rgb(47, 139, 230);  HOVER COLOUR*/
+       color: black;
+        font-weight: bold
+    }
+    
+    .card-description{
+        font-size: 16px;
+        font-family: "Roboto";
+        color: rgb(69, 69, 69);
+        line-height: 1.625;
+    }
+
+    .card-by{
+        display: inline;
+    }
+
+    .card-by-image{
+        float: left;
+        padding-top: 10px;
+        padding-right: 9px;
+    }
+
+    .card-by-name{
+        float: left;
+        padding-top: 10px;
+        color: #a4adb6;
+        width: auto;
+    }
+
+    span.author{
+        font-weight: bold;
+    }
+
+    .card-price{
+        float: right;
+        margin-top: 4px;
+        padding: 6px 12px;
+        background-color: #f1f5f8;
+        color: #a1aab4;
+        font-weight: bold;
+        border-radius: 3px;
+    }
+
+    .loading{
+        margin: 0 auto;
+        padding-top: 60px;
+        text-align: center;
+        margin-bottom: 100px;
+    }
+
+    .our-prices{
+        margin: 0 auto;
+    }
+    .op-title h2{
+        text-align: center;
+        font-size: 34px;
+        color: rgb(33, 39, 44);
+    }
+
+    .op-title p{
+        padding-top: 12px;
+        padding-bottom: 41px;
+        text-align: center;
+        font-size: 20px;
+        color: rgb(134, 145, 157);
+    }
+
+    .price-container{
+        display: inline-block;
+    }
+    
+    .price-card-small{
+        float: left;
+        margin-right: 25px;
+        width: 370px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        background:white;
+    }
+
+    .price-card-middle{
+        position: relative;
+        z-index: 10;
+        padding-bottom: 19px;
+    }
+    img.recommended{
+        padding-top: 20px;
+        padding-bottom: 22px;
+        position: absolute;
+        z-index: 20;
+        left:-6px;
+    }
+
+    .price-card-last{
+        margin-right: 0px;
+    }
+
+    span.pc-type{
+        font-size: 30px;
+        color: rgb(33, 33, 33);
+        display: block;
+        padding-top: 47px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    span.pc-description{
+        display: block;
+        font-size: 16px;
+        color: rgb(134, 145, 157);
+        text-align: center;
+        padding-top:11px;
+        padding-bottom: 31px;
+    }
+
+    span.pc-price{
+        display: inline-block;
+        padding-left: 100px;
+        padding-bottom: 36px;
+    }
+
+    span.pc-dollar{
+        font-family: "Roboto Light";
+        font-size: 24px;
+        color: #2f8be6;
+        font-weight: lighter;
+        text-align: center;
+    }
+
+    span.pc-price-value{
+        font-family: "Roboto Medium";
+        font-size: 60px;
+        color: #2f8be6;
+        font-weight: bold;
+    }
+
+    span.per-month{
+        font-family: "Roboto Light";
+        font-size: 24px;
+        color: #2f8be6;
+        font-weight: lighter;
+    }
+
+    ul.feature-list li{
+        list-style: none;
+        padding-left: 30px;
+        color: #454545;
+        padding-bottom: 17px;
+    }
+
+    ul.feature-list li:before{
+        content: url("../images/arrow-right.png");
+        padding-right: 16px;
+    }
+
+    ul.feature-list li::after{
+        content: "\A";
+        content: url("../images/prices-list-border.png");
+        padding-bottom: 17px;
+    }
+
+    .purchase-button-c button{
+    margin-left: 30px;
+    margin-bottom: 50px;
+    background: #2f8be6;
+    padding: 18px 118px 18px 118px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    }
+
+    .join-us-container{
+        margin-top:100px;
+        background-image: url(../images/join-us-bg.png);
+    }
+
+    .juc-main{
+        width: 1170px;
+        margin: 0 auto;
+    }
+    
+    p.join-us-title{
+        padding-top: 100px;
+        font-size: 34px;
+        font-family: "Roboto";
+        color: rgb(33, 39, 44);
+        text-align: center;
+        padding-bottom: 17px;
+    }
+
+    p.ju-description{
+        font-size: 20px;
+        font-family: "Roboto";
+        color: rgb(134, 145, 157);
+        text-align: center;
+        padding-bottom: 38px;
+    }
+
+    .ml-input{
+        width: 460px;
+        background-color:white;
+        height: 60px;
+        border-style: solid;
+        border-width: 0px 2px 0px 0px;
+        border-color:  #f9f9f9;;
+        padding-left: 15px;
+        margin-left: 300px;
+    }
+
+    .ml-submit{
+        width: 116px;
+        height: 60px;
+        background-color: #2f8be6;
+        padding: 0px 20px;
+        color: white;
+        font-size: 18px;
+        border-style: solid;
+        border-radius: 2px;
+    }
+
+    p.disclaimer{
+        font-size: 13px;
+        font-family: "Roboto";
+        color: rgb(134, 145, 157);
+        text-align: center;
+        padding-top:10px;
+        padding-bottom: 100px;
+    }
+
+    .testimonials{
+        background: #f1f5f8;
+    }
+
+    .testimonials-main{
+        width: 1170px;
+        margin: 0 auto;
+    }
+    h2.tm-title{
+        padding-top: 100px;
+        text-align: center;
+        font-size: 34px;
+        font-family: "Roboto";
+        color: rgb(33, 39, 44);
+    }
+
+    .tm-para{
+        padding-top: 20px;
+        font-size: 20px;
+        font-family: "Roboto";
+        color: rgb(134, 145, 157);
+        text-align: center;
+    }
+
+    .testimonials-card-wrapper{
+        display: inline-block;
+    }
+    .tc-container{
+        float: left;
+        margin-left: 30px;
+    }
+    .testimonials-card{
+        width: 550px;
+        background: #ffffff;
+        margin-top: 60px;
+        box-shadow: 0px 2px #dae1e7;
+    }
+
+    p.testimonials-para{
+        font-size: 18px;
+        font-family: "Roboto";
+        color: rgb(69, 69, 69);
+        font-style: italic;
+        padding: 70px 58px 70px 50px;
+    }
+    img.tm-arrow{
+        padding-left: 54px;
+    }
+    .tm-profile{
+        padding-left: 31px;
+    }
+    img.tm-profile-pic{
+        float: left;
+        padding-right: 14px;
+    }
+
+ p.profile-name{
+     padding-top: 10px;
+     padding-bottom: 12px;
+     font-size:16px;
+     font-family:"Roboto Bold";
+     font-weight: bold;
+     color: #454545;
+ }
+
+ p.profile-position{
+     color: #a2adb8;
+     font-size: 14px;
+     font-family: "Roboto Regular";
+ }
+.learn-how{
+    background: #ffffff;
+}
+ .learn-how-main{
+     width: 1170px;
+     margin: 0 auto;
+     margin-top: 95px;
+ }
+
+ h2.lh-title{
+    font-size: 34px;
+    font-family: "Roboto Medium";
+    color: rgb(33, 39, 44);
+    text-align: center;
+    padding-top: 101px;
+ }
+
+ p.lh-para{
+    font-size: 20px;
+    font-family: "Roboto";
+    color: rgb(134, 145, 157);
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 40px;
+ }
+.get-your-ebook{
+    width: 253px;
+        height: 60px;
+        background-color: #2f8be6;
+        padding: 21px 26px;
+        color: white;
+        font-size: 18px;
+        border-radius: 5px;
+        text-decoration: none;
+    text-align: center;
+    margin-left: 470px;
+    margin-bottom: 100px;
+}
+
+.footer-wr{
+    background: #21272C;
+    height: 447px;
+}
+
+.footer-wrapper-main{
+    
+    width: 1170px;
+    margin:0 auto;
+    color:#b8bec4;
+}
+
+.footer-right-half{
+    margin-top:80px;
+    width: 570px;
+    float:left;
+}
+
+.digital-para{
+    float: left;
+    text-align: left;
+    width: 270px;
+    margin-right:30px;
+}
+
+h2.dp-title{
+    font-size: 20px;
+  font-family: "Roboto";
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  padding-bottom:30px;
+
+}
+
+p.dp-para{
+    font-size: 16px;
+    font-family: "Roboto";
+    color: rgb(218, 225, 231);
+    padding-bottom: 40px;
+    line-height: 1.625;
+}
+
+.quick-links{
+    width: 270px;
+    float: left;
+}
+ .quick-links ul li{
+     padding-bottom: 15px;
+     list-style: none;
+ }
+
+ .quick-links ul li::after{
+     content:url(../images/breaker.png);
+     padding-bottom: 15px;
+ }
+
+ .footer-left-half{
+    margin-top:80px;
+    width: 570px;
+    float:right;
+ }
+.recent-posts{
+    float: left;
+    width:270px;
+    margin-right: 30px;;
+}
+
+.dp-para-2{
+    font-size: 16px;
+    font-family: "Roboto";
+    color: rgb(218, 225, 231);
+    line-height: 1.625;
+}
+ .date{
+    font-size: 14px;
+    font-family: "Roboto Regular";
+    color:#a2adb8;
+    padding-top:18px;
+    padding-bottom:-22px;
+ }
+
+ .sign-up-news{
+ }
+
+.ml-input-footer{
+    width: 170px;
+    background-color:white;
+    height: 47px;
+    border-style: solid;
+    border-color:  #f9f9f9;;
+    padding-left: 15px;
+}
+
+.ml-submit-footer{
+    width: 77px;
+    height: 47px;
+    background-color: #2f8be6;
+    color: white;
+    font-size: 14px;
+    border-style: solid;
+    border-radius: 2px;
+    text-align: center;
+}
+
+.footer-bottom{
+    background: #21272C;
+    border-style: solid;
+    border-width: 1px 0px 0px 0px;
+    border-color: #2c3237;
+    
+    
+}
+
+.fb-main{
+    width: 1170px;
+    margin: 0 auto;
+    
+    
+}
+.fb-main p{
+    padding-top:32px;
+    padding-bottom: 30px;
+    font-size: 14px;
+    font-family: "Roboto";
+    color: rgb(218, 225, 231);
+}

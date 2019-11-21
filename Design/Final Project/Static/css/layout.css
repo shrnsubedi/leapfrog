@@ -1,26 +1,25 @@
 .header-wrapper{
-    height: 680px;
     background: url("../images/main-bg.png");
-    background-size: 100% 628px;
+    background-size: 100% 640px;
 }
 .header-wrapper-main{
     width: 1170px;
     margin: 0 auto;
-    height: 680px;
+    height: 640px;
 }
 
 .header-logo-menu{
-
+    display: inline-block;
 }
 
 img.logo{
-    float: left;
     padding-top: 24px;
+    float: left;
+    padding-right: 202px;
 }
 
 .nav-menu-w-login{
     float: right;
-    display: inline-block;
 }
 
 .nav-menu{
@@ -32,38 +31,42 @@ nav.menu-list{
 }
 
 .nav-menu ul li{
+    font-family: "Roboto";
     list-style: none;
     color: white;
     display: inline;
     padding-left: 40px;
 }
+
 .nav-menu ul li:first-child{
     padding-left: 0px;
-}
-.cart-and-login{
-    float: right;
-    padding-top:27px
-}
-
-.cart-and-login ul li{
-    list-style: none;
-    color: white;
-    display: inline;
-    padding-left: 23px;
-    padding-bottom: 27px;
 }
 
 .icon-angle-down{
     padding-left: 10px;
 }
-
-a.login{
-    width=95px;
-    height: 41px;
-    background: #86919d;
-    padding: 10px;
+.cart-and-login{
+    float: left;
+    padding-top:27px;
+}
+.cart-and-login ul li{
+    list-style: none;
+    color: white;
+    display: inline;
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
+.cart-and-login ul li:last-child{
+    padding-left: 0px;
+}
+.login{
+    float: right;
+    width=94px;
+    height: 40px;
+    background: #2f8be6;
+    padding: 3px 25px 3px 25px;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 3px;
     color: white;
     font-weight: bold;
     text-decoration: none;
@@ -71,7 +74,7 @@ a.login{
 
 h1.heading{
     color: white;
-    padding-top: 220px;
+    padding-top: 158px;
     font-size: 62px;
     padding-left:100px;
     font-family: "Roboto";
@@ -83,11 +86,12 @@ h1.heading{
 }
 
 p.heading-para{
-    color: white;
-    padding-top: 46px;
-    padding-bottom: 41px;
+    color: rgb(218, 225, 231);
+    padding-top: 44px;
+    padding-bottom: 45px;
     padding-left:309px;
     font-size: 20px;
+    font-family: "Roboto";
 }
 
 a.view-all{
@@ -97,8 +101,9 @@ a.view-all{
     padding: 20px;
     text-align: center;
     font-size: 18px;
+    font-family: "Roboto";
+    color: rgb(255, 255, 255);
     border-radius: 4px;
-    color: white;
     font-weight: bold;
     margin-right: 15px;
     text-decoration: none;
@@ -123,6 +128,9 @@ a.view-all:hover{
 }
 
 .entire-site {
+    font-size: 16px;
+    font-family: "Roboto";
+    color: rgb(148, 148, 148);
     float: left;
     background-color:white;
     width: 165px;
@@ -205,44 +213,58 @@ a.view-all:hover{
 }
     .product-cards{
         padding-top: 149px;
+        display: inline-block;
     }
    div.card{
+        float: left;
         width: 370px;
         height: 502px;
         box-shadow: 0 4px 8px 0 grey;
         background-color: white;
+        margin-right:20px;
+        margin-bottom: 39px;
     }
-
     .card-image{
-        
         height: 280px;
         width:370px;
+        position: relative;
     }
 
     .back-box{  
-        position: relative;
         z-index: 10;
     }
 
     .front-box{
-        position: absolute;
         display: none;
         z-index: 20;
-        background: url(../images/product-mask.png);
+    }
+    .front-box ul{
+        position: absolute;
+        z-index: 30;
+        bottom:115px;
+        left:140px;
+    }
+    .front-box ul li{
+        list-style: none;
+        display: inline-block;
     }
 
-    .front-box ul{
-        z-index: 30;
+    .stats-pic{
         position: absolute;
-        list-style: none;
-        display: inline;
-        top:50%;
-        bottom:50%;
+        z-index: 40;
+        display: none;
+        top:10px;
+        left:10px;
     }
 
     .card-image:hover .front-box{
         display: block;
-        position: absolute;
+    }
+    .card-image:hover .stats-pic{
+        display: block;
+    }
+    .card-image:hover .back-box{
+        opacity: 0.2;
     }
     .container{
         padding-left: 25px;

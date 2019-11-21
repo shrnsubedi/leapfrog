@@ -8,12 +8,15 @@
         <link rel="stylesheet" type="text/css" href="css/layout.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <link rel="stylesheet" href="font-awesome/font-awesome/css/font-awesome.min.css">
+        <!--[if lt IE 9]>
+        <script src="/js/html5shiv.js"></script>
+        <![endif]-->
     </head>
     <body> 
             <div class="header-wrapper">
                 <div class="header-wrapper-main">
                     <div class="header-logo-menu clearfix">
-                            <img class="logo" src="images/logo.png">
+                        <img class="logo" src="images/logo.png">
                         <div class="nav-menu-w-login clearfix">
                             <div class="nav-menu">
                                 <nav class="menu-list">
@@ -29,18 +32,21 @@
                             <div class="cart-and-login clearfix">
                                 <nav class="search-cart">
                                     <ul>
-                                            <li>
-                                                    <img src="images/sep.png">
-                                            </li>
+                                        <li>
+                                             <img src="images/sep.png">
+                                        </li>
                                         <li>
                                             <i class="icon-search"></i>
                                         </li>
                                         <li>
                                             <i class="icon-shopping-cart"></i>
                                         </li>
+                                        <li>
+                                            <img src="images/cart-base.png">
+                                        </li>
                                     </ul>
                                 </nav>
-                                <a class="login" href="#">Login</a>
+                                
                             </div>
                         </div>
                     </div>
@@ -105,20 +111,22 @@
             <div class="body-wrapper">
                 <div class="body-wrapper-main">
                     <div class="product-cards">
+        <!-- Cards start here-->
                             <div class="card">
                                 <div class="card-image">
                                     <div class="back-box">
                                             <img src="../images/product-1.png">
                                     </div>
                                     <div class="front-box">
-                                           <ul>
+                                           <ul class="hover-buttons">
                                                <li>
                                                    <a href="#"><img src="images/view-detail.png"></a>
                                                </li>
                                                <li>
-                                                    <a href="#"><img src="images/view-detail.png"></a>
+                                                    <a href="#"><img src="images/Cart.png"></a>
                                                 </li>
                                            </ul>
+                                           <img class="stats-pic" src="images/stats-base.png">
                                     </div>
                                 </div>
                                 <div class="container">
@@ -147,7 +155,354 @@
                                         </div>
                                 </div>
                             </div>
+                            <div class="card">
+                                    <div class="card-image">
+                                        <div class="back-box">
+                                                <img src="../images/product-2.png">
+                                        </div>
+                                        <div class="front-box">
+                                               <ul>
+                                                   <li>
+                                                       <a href="#"><img src="images/view-detail.png"></a>
+                                                   </li>
+                                                   <li>
+                                                        <a href="#"><img src="images/view-detail.png"></a>
+                                                    </li>
+                                               </ul>
+                                               <img class="stats-pic" src="images/stats-base.png">
+                                        </div>
+                                    </div>
+                                    <div class="container">
+                                            <div class="card-title">
+                                            <p>Water Bottle Mockup</p>
+                                            </div>
+                                            <div class="card-description">
+                                                <p>
+                                                        Super Clean, minimalistic, stylized 
+                                                        mockup collection with awesome customization 
+                                                        features and huge resolution
+                                                </p>
+                                                <img src="/images/card-border.png">
+                                            </div>
+                                            <div class="card-by clearfix">
+                                                <div class="card-by-image">
+                                                    <img src="images/card-by-image.png">
+                                                </div>
+                                                <div class="card-by-name">
+                                                    <span>by</span>
+                                                    <span class="author">Sirapa Manandar</span>
+                                                </div>
+                                                <div class="card-price">
+                                                    <p>$60.00</p>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                        <div class="card-image">
+                                            <div class="back-box">
+                                                    <img src="../images/product-3.png">
+                                            </div>
+                                            <div class="front-box">
+                                                   <ul>
+                                                       <li>
+                                                           <a href="#"><img src="images/view-detail.png"></a>
+                                                       </li>
+                                                       <li>
+                                                            <a href="#"><img src="images/view-detail.png"></a>
+                                                        </li>
+                                                   </ul>
+                                                   <img class="stats-pic" src="images/stats-base.png">
+                                            </div>
+                                        </div>
+                                        <div class="container">
+                                                <div class="card-title">
+                                                <p>T-shirt Mockup PSD</p>
+                                                </div>
+                                                <div class="card-description">
+                                                    <p>
+                                                            Super Clean, minimalistic, stylized 
+                                                            mockup collection with awesome customization 
+                                                            features and huge resolution
+                                                    </p>
+                                                    <img src="/images/card-border.png">
+                                                </div>
+                                                <div class="card-by clearfix">
+                                                    <div class="card-by-image">
+                                                        <img src="images/card-by-image.png">
+                                                    </div>
+                                                    <div class="card-by-name">
+                                                        <span>by</span>
+                                                        <span class="author">Sirapa Manandar</span>
+                                                    </div>
+                                                    <div class="card-price">
+                                                        <p>$60.00</p>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                            <div class="card-image">
+                                                <div class="back-box">
+                                                        <img src="../images/product-1.png">
+                                                </div>
+                                                <div class="front-box">
+                                                       <ul>
+                                                           <li>
+                                                               <a href="#"><img src="images/view-detail.png"></a>
+                                                           </li>
+                                                           <li>
+                                                                <a href="#"><img src="images/view-detail.png"></a>
+                                                            </li>
+                                                       </ul>
+                                                       <img class="stats-pic" src="images/stats-base.png">
+                                                </div>
+                                            </div>
+                                            <div class="container">
+                                                    <div class="card-title">
+                                                    <p>Collector Ios Wireframe UI Kit</p>
+                                                    </div>
+                                                    <div class="card-description">
+                                                        <p>
+                                                                Super Clean, minimalistic, stylized 
+                                                                mockup collection with awesome customization 
+                                                                features and huge resolution
+                                                        </p>
+                                                        <img src="/images/card-border.png">
+                                                    </div>
+                                                    <div class="card-by clearfix">
+                                                        <div class="card-by-image">
+                                                            <img src="images/card-by-image.png">
+                                                        </div>
+                                                        <div class="card-by-name">
+                                                            <span>by</span>
+                                                            <span class="author">Sirapa Manandar</span>
+                                                        </div>
+                                                        <div class="card-price">
+                                                            <p>$60.00</p>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                                <div class="card-image">
+                                                    <div class="back-box">
+                                                            <img src="../images/product-1.png">
+                                                    </div>
+                                                    <div class="front-box">
+                                                           <ul>
+                                                               <li>
+                                                                   <a href="#"><img src="images/view-detail.png"></a>
+                                                               </li>
+                                                               <li>
+                                                                    <a href="#"><img src="images/view-detail.png"></a>
+                                                                </li>
+                                                           </ul>
+                                                           <img class="stats-pic" src="images/stats-base.png">
+                                                    </div>
+                                                </div>
+                                                <div class="container">
+                                                        <div class="card-title">
+                                                        <p>Collector Ios Wireframe UI Kit</p>
+                                                        </div>
+                                                        <div class="card-description">
+                                                            <p>
+                                                                    Super Clean, minimalistic, stylized 
+                                                                    mockup collection with awesome customization 
+                                                                    features and huge resolution
+                                                            </p>
+                                                            <img src="/images/card-border.png">
+                                                        </div>
+                                                        <div class="card-by clearfix">
+                                                            <div class="card-by-image">
+                                                                <img src="images/card-by-image.png">
+                                                            </div>
+                                                            <div class="card-by-name">
+                                                                <span>by</span>
+                                                                <span class="author">Sirapa Manandar</span>
+                                                            </div>
+                                                            <div class="card-price">
+                                                                <p>$60.00</p>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                    <div class="card-image">
+                                                        <div class="back-box">
+                                                                <img src="../images/product-1.png">
+                                                        </div>
+                                                        <div class="front-box">
+                                                               <ul>
+                                                                   <li>
+                                                                       <a href="#"><img src="images/view-detail.png"></a>
+                                                                   </li>
+                                                                   <li>
+                                                                        <a href="#"><img src="images/view-detail.png"></a>
+                                                                    </li>
+                                                               </ul>
+                                                               <img class="stats-pic" src="images/stats-base.png">
+                                                        </div>
+                                                    </div>
+                                                    <div class="container">
+                                                            <div class="card-title">
+                                                            <p>Collector Ios Wireframe UI Kit</p>
+                                                            </div>
+                                                            <div class="card-description">
+                                                                <p>
+                                                                        Super Clean, minimalistic, stylized 
+                                                                        mockup collection with awesome customization 
+                                                                        features and huge resolution
+                                                                </p>
+                                                                <img src="/images/card-border.png">
+                                                            </div>
+                                                            <div class="card-by clearfix">
+                                                                <div class="card-by-image">
+                                                                    <img src="images/card-by-image.png">
+                                                                </div>
+                                                                <div class="card-by-name">
+                                                                    <span>by</span>
+                                                                    <span class="author">Sirapa Manandar</span>
+                                                                </div>
+                                                                <div class="card-price">
+                                                                    <p>$60.00</p>
+                                                                </div>
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card">
+                                                        <div class="card-image">
+                                                            <div class="back-box">
+                                                                    <img src="../images/product-1.png">
+                                                            </div>
+                                                            <div class="front-box">
+                                                                   <ul>
+                                                                       <li>
+                                                                           <a href="#"><img src="images/view-detail.png"></a>
+                                                                       </li>
+                                                                       <li>
+                                                                            <a href="#"><img src="images/view-detail.png"></a>
+                                                                        </li>
+                                                                   </ul>
+                                                                   <img class="stats-pic" src="images/stats-base.png">
+                                                            </div>
+                                                        </div>
+                                                        <div class="container">
+                                                                <div class="card-title">
+                                                                <p>Collector Ios Wireframe UI Kit</p>
+                                                                </div>
+                                                                <div class="card-description">
+                                                                    <p>
+                                                                            Super Clean, minimalistic, stylized 
+                                                                            mockup collection with awesome customization 
+                                                                            features and huge resolution
+                                                                    </p>
+                                                                    <img src="/images/card-border.png">
+                                                                </div>
+                                                                <div class="card-by clearfix">
+                                                                    <div class="card-by-image">
+                                                                        <img src="images/card-by-image.png">
+                                                                    </div>
+                                                                    <div class="card-by-name">
+                                                                        <span>by</span>
+                                                                        <span class="author">Sirapa Manandar</span>
+                                                                    </div>
+                                                                    <div class="card-price">
+                                                                        <p>$60.00</p>
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                            <div class="card-image">
+                                                                <div class="back-box">
+                                                                        <img src="../images/product-1.png">
+                                                                </div>
+                                                                <div class="front-box">
+                                                                       <ul>
+                                                                           <li>
+                                                                               <a href="#"><img src="images/view-detail.png"></a>
+                                                                           </li>
+                                                                           <li>
+                                                                                <a href="#"><img src="images/view-detail.png"></a>
+                                                                            </li>
+                                                                       </ul>
+                                                                       <img class="stats-pic" src="images/stats-base.png">
+                                                                </div>
+                                                            </div>
+                                                            <div class="container">
+                                                                    <div class="card-title">
+                                                                    <p>Collector Ios Wireframe UI Kit</p>
+                                                                    </div>
+                                                                    <div class="card-description">
+                                                                        <p>
+                                                                                Super Clean, minimalistic, stylized 
+                                                                                mockup collection with awesome customization 
+                                                                                features and huge resolution
+                                                                        </p>
+                                                                        <img src="/images/card-border.png">
+                                                                    </div>
+                                                                    <div class="card-by clearfix">
+                                                                        <div class="card-by-image">
+                                                                            <img src="images/card-by-image.png">
+                                                                        </div>
+                                                                        <div class="card-by-name">
+                                                                            <span>by</span>
+                                                                            <span class="author">Sirapa Manandar</span>
+                                                                        </div>
+                                                                        <div class="card-price">
+                                                                            <p>$60.00</p>
+                                                                        </div>
+                                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card">
+                                                                <div class="card-image">
+                                                                    <div class="back-box">
+                                                                            <img src="../images/product-1.png">
+                                                                    </div>
+                                                                    <div class="front-box">
+                                                                           <ul>
+                                                                               <li>
+                                                                                   <a href="#"><img src="images/view-detail.png"></a>
+                                                                               </li>
+                                                                               <li>
+                                                                                    <a href="#"><img src="images/view-detail.png"></a>
+                                                                                </li>
+                                                                           </ul>
+                                                                           <img class="stats-pic" src="images/stats-base.png">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="container">
+                                                                        <div class="card-title">
+                                                                        <p>Collector Ios Wireframe UI Kit</p>
+                                                                        </div>
+                                                                        <div class="card-description">
+                                                                            <p>
+                                                                                    Super Clean, minimalistic, stylized 
+                                                                                    mockup collection with awesome customization 
+                                                                                    features and huge resolution
+                                                                            </p>
+                                                                            <img src="/images/card-border.png">
+                                                                        </div>
+                                                                        <div class="card-by clearfix">
+                                                                            <div class="card-by-image">
+                                                                                <img src="images/card-by-image.png">
+                                                                            </div>
+                                                                            <div class="card-by-name">
+                                                                                <span>by</span>
+                                                                                <span class="author">Sirapa Manandar</span>
+                                                                            </div>
+                                                                            <div class="card-price">
+                                                                                <p>$60.00</p>
+                                                                            </div>
+                                                                        </div>
+                                                                </div>
+                                                            </div>
                     </div>
+
+<!--Cards End here-->
+
                     <div class="loading">
                             <img src="images/loading.png">
                     </div>

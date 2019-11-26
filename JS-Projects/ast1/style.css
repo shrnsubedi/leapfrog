@@ -1,0 +1,33 @@
+#carousel-container {
+  position: relative;
+  overflow: hidden;
+  margin: auto;
+}
+
+#carousel-image-wrapper{
+  position: absolute;
+  display: flex;
+  left: 0px;
+}
+
+a {
+  text-decoration: none;
+  padding: 8px 16px;
+  position: absolute;
+  display: inline;
+}
+
+#previous-button {
+  top: 86px;
+  background-color: #f1f1f1;
+  color: black;
+  border-radius: 50%;
+}
+
+#next-button {
+  top: 86px;
+  left: 360px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 50%;
+}

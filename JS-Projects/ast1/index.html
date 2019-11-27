@@ -17,8 +17,14 @@
       <img src="images/img3.jpg" alt="Image" />
       <img src="images/img4.jpg" alt="Image" />
     </div>
-    <a href="#" id="previous-button" onclick="setInterval">&#8249;</a>
-    <a href="#" id="next-button" onclick="setInterval">&#8250;</a>
+    <button id="previous-button" onclick="setDirectionLeft()">&#8249;</button>
+    <button id="next-button" onclick="setDirectionRight()">&#8250;</button>
+  </div>
+  <div class="dot-buttons" style="text-align:center">
+    <span id="0" class="inactive" onclick="dotOnclick(this.id)"></span>
+    <span id="1" class="inactive" onclick="dotOnclick(this.id)"></span>
+    <span id="2" class="inactive" onclick="dotOnclick(this.id)"></span>
+    <span id="3" class="inactive" onclick="dotOnclick(this.id)"></span>
   </div>
   <script src="script.js"></script>
 </body>

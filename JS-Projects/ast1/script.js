@@ -2,9 +2,9 @@ var imgArray = document.images;
 var imageCount = imgArray.length;
 var index = 0;
 var widthImage = 400;
-var moveImagePixel = 400;
+var moveImagePixel = 400; //Used for JS only transition effect
 var heightImage = 200;
-var direction = "right";
+var direction = 'right';
 
 var carouselContainer = document.getElementById('carousel-container');
 var carouselImageWrapper = document.getElementById('carousel-image-wrapper');
@@ -14,9 +14,9 @@ carouselContainer.style.height = heightImage + 'px';
 
 carouselImageWrapper.style.width = imageCount * widthImage;
 
-var dots = document.getElementsByTagName("span")
-console.log(dots);
-/* Code to implement image switch with dot press
+var dots = document.getElementsByTagName('span')
+
+/* Code to implement image switch with dot press(Not functional)
 function dotOnclick(clickedId) {
   console.log(clickedId);
   switch (clickedId) {
@@ -35,24 +35,24 @@ function dotOnclick(clickedId) {
 }
 */
 function setDirectionLeft() {
-  direction = "left";
+  direction = 'left';
 }
 
 function setDirectionRight() {
-  direction = "right";
+  direction = 'right';
 }
 
 setInterval(function () {
-  if (direction == "left") {
+  if (direction == 'left') {
     if (index == imageCount) {
       index = 0;
     }
     else {
       carouselImageWrapper.style.left = index * -moveImagePixel + 'px';
-      carouselImageWrapper.style.transition = "all 2s";
-      dots[index].setAttribute("class", "inactive");
+      carouselImageWrapper.style.transition = 'all 2s';
+      dots[index].setAttribute('class', 'inactive');
       index++;
-      dots[index].setAttribute("class", "active");
+      dots[index].setAttribute('class', 'active');
     }
   }
 
@@ -63,10 +63,10 @@ setInterval(function () {
     else {
       carouselImageWrapper.style.right = index * -moveImagePixel + 'px';
       carouselImageWrapper.style.left = "";
-      carouselImageWrapper.style.transition = "all 2s";
-      dots[index].setAttribute("class", "inactive");
+      carouselImageWrapper.style.transition = 'all 2s';
+      dots[index].setAttribute('class', 'inactive');
       index++;
-      dots[index].setAttribute("class", "active");
+      dots[index].setAttribute('class', 'active');
     }
   }
 }, 2000);

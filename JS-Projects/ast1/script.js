@@ -68,5 +68,3 @@ function changeImage(imgIndex) {
     }
   }, 1000);
 }
-
-changeImage(index);

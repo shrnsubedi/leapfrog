@@ -5,7 +5,7 @@ function Carousel(carouselContainer, carouselImageWrapper, widthImage, heightIma
   this.widthImage = widthImage;
   this.heightImage = heightImage;
   this.imageCount = imageCount;
-  this.id;
+  var id;
   this.moveImagePixel = -400;
   this.index = 0;
   this.delay = delay;
@@ -15,14 +15,17 @@ function Carousel(carouselContainer, carouselImageWrapper, widthImage, heightIma
     this.carouselContainer.style.width = this.widthImage + 'px';
     this.carouselContainer.style.height = this.heightImage + 'px';
     this.carouselImageWrapper.style.width = this.imageCount * this.widthImage;
+    generateDots();
   }
 
   this.generateDots = function () {
     var dotVar = document.createElement('div');
+    this.carouselContainer.appendChild(dotVar);
     dotVar.setAttribute('class', 'dot-buttons');
     dotVar.style.textAlign = 'center';
     for (var j = 0; j < imageCount; j++) {
       this.dotArray[j] = document.createElement("span");
+      this.dotArray[j].setAttribute('id','id'+j);
     }
   }
 
@@ -77,7 +80,7 @@ function Carousel(carouselContainer, carouselImageWrapper, widthImage, heightIma
   }
 
   this.intervalFunction = function (dotIndex) {
-    this.id = setInterval(this.changeImage(dotIndex), this.transitionTime);
+    id = setInterval(this.changeImage(dotIndex), this.transitionTime);
   }
 
 }

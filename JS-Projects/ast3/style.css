@@ -1,0 +1,15 @@
+.collision-boundary {
+    height: 500px;
+    width: 500px;
+    background: #dfdfdf;
+    position: relative;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+  }
+  
+  .box{
+    position: absolute;
+    background-image: url('images/ant.gif');
+    background-size: contain;
+  }

@@ -1,7 +1,6 @@
 ; (function () {
 	function Player(parentElement) {
 		//Variable Declaration
-		this.moveRoadBy = 10;
 		this.leftPos = 250;
 		this.rightPos = 0;
 		this.height = 100;
@@ -21,18 +20,9 @@
 			this.parentElement.appendChild(playerCar);
 			this.element = playerCar;
 			this.drawCar();
-
 		}
-		//Move background
-		this.moveBackground = function () {
-			this.parentElement.style.backgroundPositionY = this.moveRoadBy + 'px';
-			this.moveRoadBy = this.moveRoadBy + 5;
-		}
-
-		setInterval(this.moveBackground.bind(this), 10);
 
 		//Move player car after recieving keystroke
-
 		this.move = function (l, r) {
 			this.rightPos += r;
 			this.leftPos += l;
@@ -41,13 +31,15 @@
 
 		this.drawCar = function () {
 			this.element.style.left = this.leftPos + 'px';
+			this.element.style.transition = "all 0.5s";
 			this.element.style.right = this.rightPos + 'px';
 		}
-		//Function for event listener
 
+		//Function for event listener
 		function keyDownHandler(e) {
 			console.log('event handler called');
 			if (e.key == "Right" || e.key == "ArrowRight") {
+				console.log('right pressed');
 				if (this.leftPos == 425) {
 					this.move(0, 0);
 				}
@@ -56,6 +48,7 @@
 				}
 			}
 			else if (e.key == "Left" || e.key == "ArrowLeft") {
+				console.log('left pressed');
 				if (this.leftPos == 75) {
 					this.move(0, 0);
 				}
@@ -107,7 +100,6 @@
 
 		this.drawOpponentCar = function (lane) {
 			this.element2.style.left = lane + 'px';
-			this.moveOpponentCar();
 		}
 
 		this.moveOpponentCar = function () {
@@ -118,18 +110,45 @@
 		this.removeOpponentCar = function () {
 			this.parentElement.removeChild(this.element2);
 		}
+	}
 
-		setInterval(this.moveOpponentCar.bind(this), 10);
+	//--------------------------------Bullet Class-------
+	function Weapon(parentElement, leftPos) {
+		var bullet = '';
+		this.bulletSpeed = 425;
+		this.parentElement = parentElement;
+		this.leftPosB = leftPos + 35;
+		this.topPosB = 425;
+
+		this.bulletCreate = function () {
+			bullet = document.createElement('div');
+			bullet.classList.add('bullet-div');
+			bullet.style.left = this.leftPosB + 'px';
+			bullet.style.top = this.topPosB + 'px';
+			this.parentElement.appendChild(bullet);
+		}
+
+		this.bulletFire = function () {
+			bullet.style.top = this.bulletSpeed + 'px';
+			this.bulletSpeed -= 5;
+		}
+		this.removeBullet = function () {
+			this.parentElement.removeChild(this.bullet);
+		}
 	}
 	//---------------------------------Game Class---------
 	function GameMenu(parentElement) {
 		this.parentElement = parentElement;
 		this.score = 0;
-		this.oc;
+		this.oc = '';
+		this.moveRoadBy = 10;
 		this.carArray = [];
 		var that = this;
+		this.bulletDiv = '';
+		this.bulletArray = [];
 		var id;
-		//this.car = '';
+
+		document.addEventListener("keydown", keyDownHandler.bind(this), false);
 
 		var scoreShow = document.createElement('h2');
 		parentElement.appendChild(scoreShow);
@@ -139,14 +158,29 @@
 			this.car.generatePlayer();
 		};
 
+		this.moveBackground = function () {
+			this.parentElement.style.backgroundPositionY = this.moveRoadBy + 'px';
+			this.moveRoadBy = this.moveRoadBy + 5;
+		}
+
 		this.checkCollision = function () {
-			for (var i = 0; i < this.carArray.length; i++)
+			for (var i = 0; i < this.carArray.length; i++) {
 				if (this.car.leftPos < this.carArray[i].lanePosition + this.carArray[i].width &&
 					this.car.leftPos + this.car.width > this.carArray[i].lanePosition &&
 					this.car.y < this.carArray[i].opponentCarSpeed + this.carArray[i].height &&
 					this.car.y + this.car.height > this.carArray[i].opponentCarSpeed) {
 					this.gameOver();
 				}
+				for (var m = 0; m < this.carArray.length; m++) {
+					if (this.bulletArray[m].leftPosB + 10 >= this.carArray[i].leftPos && this.bulletArray[m].leftPosB <= this.carArray[i].leftPos + 100
+						&& this.bulletArray[m].bulletSpeed <= this.carArray[i].opponentCarSpeed + 100 && this.bulletArray[m].bulletSpeed + 10 >= this.carArray[i].opponentCarSpeed) {
+						console.log('collision detected');
+						this.carArray[m].removeOpponentCar();
+						this.carArray.splice(m, 1);
+						this.bulletArray[m].removeBullet();
+					}
+				}
+			}
 		}
 
 		this.opponentLoop = function () {
@@ -154,10 +188,29 @@
 			this.oc.opponentCarSpeed = 1;
 			this.oc.generateOpponentCars();
 			this.carArray.push(this.oc);
-			this.checkCollision();
 			this.updateScore();
 		}
-		id = setInterval(this.opponentLoop.bind(this), 2200);
+
+		this.bulletLoop = function () {
+			this.bulletDiv = new Weapon(parentElement, this.car.leftPos);
+			this.bulletDiv.bulletCreate();
+			this.bulletArray.push(bulletDiv);
+		}
+
+		this.updateFunction = function () {
+			this.moveBackground();
+			for (var j = 0; j < this.carArray.length; j++) {
+				this.carArray[j].moveOpponentCar();
+			}
+			//for (var z = 0; z < this.bulletArray.length; z++) {
+			//this.bulletArray[z].bulletFire();
+			//}
+			this.bulletDiv.bulletFire();
+			this.checkCollision();
+		}
+
+		setInterval(this.opponentLoop.bind(this), 2200);
+		setInterval(this.updateFunction.bind(this), 10);
 
 		this.updateScore = function () {
 			if (that.carArray[0].opponentCarSpeed >= 500) {
@@ -172,11 +225,16 @@
 			alert('Game OVER!');
 			clearInterval(id);
 			this.score = 0;
-			document.location.reload();
+		}
+
+		function keyDownHandler(e) {
+			console.log('event handler called');
+			if (e.key == "ArrowUp") {
+				this.bulletLoop();
+			}
 		}
 	}
 	//------------------------------->Generate Game from here
-
 	var parentElement = document.getElementById('app-container');
 	new GameMenu(parentElement).carCreate();
 })();

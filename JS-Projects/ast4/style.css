@@ -1,0 +1,28 @@
+.app-container
+{
+    height: 550px;
+    width: 550px;
+    background:url('assets/road.png');
+    background-repeat: repeat-y;
+    position: relative;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.player-car{
+    position: absolute;
+    background: url('assets/carPlayer.png');
+    background-size: contain;
+    z-index: 2;
+}
+
+.opponent-car{
+    position: absolute;
+    background: url('assets/carOpponent.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 2;
+}

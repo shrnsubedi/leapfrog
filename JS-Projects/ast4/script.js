@@ -172,6 +172,7 @@
 			alert('Game OVER!');
 			clearInterval(id);
 			this.score = 0;
+			document.location.reload();
 		}
 	}
 	//------------------------------->Generate Game from here

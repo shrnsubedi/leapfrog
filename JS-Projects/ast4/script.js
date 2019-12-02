@@ -113,11 +113,11 @@
 	}
 
 	//--------------------------------Bullet Class-------
-	function Weapon(parentElement, leftPos) {
+	function Weapon(parentElement, leftPos1) {
 		var bullet = '';
 		this.bulletSpeed = 425;
 		this.parentElement = parentElement;
-		this.leftPosB = leftPos + 35;
+		this.leftPosB = leftPos1 + 35;
 		this.topPosB = 425;
 
 		this.bulletCreate = function () {
@@ -147,6 +147,7 @@
 		this.bulletDiv = '';
 		this.bulletArray = [];
 		var id;
+		var id2;
 
 		document.addEventListener("keydown", keyDownHandler.bind(this), false);
 
@@ -172,8 +173,10 @@
 					this.gameOver();
 				}
 				for (var m = 0; m < this.carArray.length; m++) {
-					if (this.bulletArray[m].leftPosB + 10 >= this.carArray[i].leftPos && this.bulletArray[m].leftPosB <= this.carArray[i].leftPos + 100
-						&& this.bulletArray[m].bulletSpeed <= this.carArray[i].opponentCarSpeed + 100 && this.bulletArray[m].bulletSpeed + 10 >= this.carArray[i].opponentCarSpeed) {
+					if (this.bulletArray[m].leftPosB + 10 >= this.carArray[i].leftPos
+						&& this.bulletArray[m].leftPosB <= this.carArray[i].leftPos + 100
+						&& this.bulletArray[m].bulletSpeed <= this.carArray[i].opponentCarSpeed + 100
+						&& this.bulletArray[m].bulletSpeed + 10 >= this.carArray[i].opponentCarSpeed) {
 						console.log('collision detected');
 						this.carArray[m].removeOpponentCar();
 						this.carArray.splice(m, 1);
@@ -194,7 +197,7 @@
 		this.bulletLoop = function () {
 			this.bulletDiv = new Weapon(parentElement, this.car.leftPos);
 			this.bulletDiv.bulletCreate();
-			this.bulletArray.push(bulletDiv);
+			this.bulletArray.push(this.bulletDiv);
 		}
 
 		this.updateFunction = function () {
@@ -202,15 +205,14 @@
 			for (var j = 0; j < this.carArray.length; j++) {
 				this.carArray[j].moveOpponentCar();
 			}
-			//for (var z = 0; z < this.bulletArray.length; z++) {
-			//this.bulletArray[z].bulletFire();
-			//}
-			this.bulletDiv.bulletFire();
+			for (var z = 0; z < this.bulletArray.length; z++) {
+				this.bulletArray[z].bulletFire();
+			}
 			this.checkCollision();
 		}
 
-		setInterval(this.opponentLoop.bind(this), 2200);
-		setInterval(this.updateFunction.bind(this), 10);
+		id2 = setInterval(this.opponentLoop.bind(this), 2200);
+		id = setInterval(this.updateFunction.bind(this), 10);
 
 		this.updateScore = function () {
 			if (that.carArray[0].opponentCarSpeed >= 500) {
@@ -224,6 +226,7 @@
 		this.gameOver = function () {
 			alert('Game OVER!');
 			clearInterval(id);
+			clearInterval(id2);
 			this.score = 0;
 		}
 

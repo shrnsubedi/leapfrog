@@ -1,4 +1,5 @@
 ; (function () {
+	var counter = 0;
 	function Player(parentElement) {
 		//Variable Declaration
 		this.leftPos = 250;
@@ -34,6 +35,9 @@
 			this.element.style.transition = "all 0.5s";
 			this.element.style.right = this.rightPos + 'px';
 		}
+		this.removePlayerCar = function () {
+			this.parentElement.removeChild(this.element);
+		}
 
 		//Function for event listener
 		function keyDownHandler(e) {
@@ -60,13 +64,12 @@
 	}
 	//------------------------------------>opponent cars class<---------------
 	function Opponent(parentElement) {
-
 		this.element2 = null;
 		this.lanePosition;
 		this.lane1 = 75;
 		this.lane2 = 250;
 		this.lane3 = 425;
-		this.opponentCarSpeed = 1;
+		this.opponentCarSpeed;
 		this.height = 100;
 		this.width = 100;
 		this.parentElement = parentElement;
@@ -104,7 +107,18 @@
 
 		this.moveOpponentCar = function () {
 			this.element2.style.top = this.opponentCarSpeed + 'px';
-			this.opponentCarSpeed += 1;
+			if (counter > 0 && counter < 2000) {
+				this.opponentCarSpeed += 1;
+			}
+			else if (counter > 2000 && counter < 3000) {
+				this.opponentCarSpeed += 2;
+			}
+			else if (counter > 3000 && counter < 4000) {
+				this.opponentCarSpeed += 3;
+			}
+			else if (counter > 4000) {
+				this.opponentCarSpeed += 4;
+			}
 		}
 
 		this.removeOpponentCar = function () {
@@ -117,7 +131,7 @@
 		var bullet = '';
 		this.bulletSpeed = 425;
 		this.parentElement = parentElement;
-		this.leftPosB = leftPos1 + 35;
+		this.leftPosB = leftPos1 + 30;
 		this.topPosB = 425;
 
 		this.bulletCreate = function () {
@@ -125,15 +139,16 @@
 			bullet.classList.add('bullet-div');
 			bullet.style.left = this.leftPosB + 'px';
 			bullet.style.top = this.topPosB + 'px';
+			this.element3 = bullet;
 			this.parentElement.appendChild(bullet);
 		}
 
 		this.bulletFire = function () {
 			bullet.style.top = this.bulletSpeed + 'px';
-			this.bulletSpeed -= 5;
+			this.bulletSpeed -= 1;
 		}
 		this.removeBullet = function () {
-			this.parentElement.removeChild(this.bullet);
+			this.parentElement.removeChild(this.element3);
 		}
 	}
 	//---------------------------------Game Class---------
@@ -146,13 +161,26 @@
 		var that = this;
 		this.bulletDiv = '';
 		this.bulletArray = [];
+		this.ammoCount = 6;
 		var id;
 		var id2;
+		var scoreShow;
+		var ammoShow;
 
 		document.addEventListener("keydown", keyDownHandler.bind(this), false);
 
-		var scoreShow = document.createElement('h2');
-		parentElement.appendChild(scoreShow);
+		this.startGame = function () {
+			scoreShow = document.createElement('h2');
+			parentElement.appendChild(scoreShow);
+
+			ammoShow = document.createElement('h2');
+			parentElement.appendChild(ammoShow);
+
+			that.carCreate();
+
+			id2 = setInterval(this.opponentLoop.bind(this), 2200);
+			id = setInterval(this.updateFunction.bind(this), 10);
+		}
 
 		that.carCreate = function () {
 			this.car = new Player(parentElement);
@@ -162,6 +190,7 @@
 		this.moveBackground = function () {
 			this.parentElement.style.backgroundPositionY = this.moveRoadBy + 'px';
 			this.moveRoadBy = this.moveRoadBy + 5;
+			counter++;
 		}
 
 		this.checkCollision = function () {
@@ -172,11 +201,11 @@
 					this.car.y + this.car.height > this.carArray[i].opponentCarSpeed) {
 					this.gameOver();
 				}
-				for (var m = 0; m < this.carArray.length; m++) {
-					if (this.bulletArray[m].leftPosB + 10 >= this.carArray[i].leftPos
+				for (var m = 0; m < this.bulletArray.length; m++) {
+					if (this.bulletArray[m].leftPosB + 30 >= this.carArray[i].leftPos
 						&& this.bulletArray[m].leftPosB <= this.carArray[i].leftPos + 100
 						&& this.bulletArray[m].bulletSpeed <= this.carArray[i].opponentCarSpeed + 100
-						&& this.bulletArray[m].bulletSpeed + 10 >= this.carArray[i].opponentCarSpeed) {
+						&& this.bulletArray[m].bulletSpeed + 30 >= this.carArray[i].opponentCarSpeed) {
 						console.log('collision detected');
 						this.carArray[m].removeOpponentCar();
 						this.carArray.splice(m, 1);
@@ -195,9 +224,17 @@
 		}
 
 		this.bulletLoop = function () {
-			this.bulletDiv = new Weapon(parentElement, this.car.leftPos);
-			this.bulletDiv.bulletCreate();
-			this.bulletArray.push(this.bulletDiv);
+			if (this.ammoCount != 0) {
+				this.bulletDiv = new Weapon(parentElement, this.car.leftPos);
+				this.bulletDiv.bulletCreate();
+				this.bulletArray.push(this.bulletDiv);
+				this.ammoCount--;
+				ammoShow.innerHTML = 'Ammo=' + this.ammoCount;
+			}
+			else {
+				ammoShow.innerHTML = 'Ammo=' + 'Empty'
+			}
+
 		}
 
 		this.updateFunction = function () {
@@ -211,9 +248,6 @@
 			this.checkCollision();
 		}
 
-		id2 = setInterval(this.opponentLoop.bind(this), 2200);
-		id = setInterval(this.updateFunction.bind(this), 10);
-
 		this.updateScore = function () {
 			if (that.carArray[0].opponentCarSpeed >= 500) {
 				that.carArray[0].removeOpponentCar();
@@ -224,10 +258,35 @@
 		}
 
 		this.gameOver = function () {
-			alert('Game OVER!');
 			clearInterval(id);
 			clearInterval(id2);
-			this.score = 0;
+
+			this.gameOverHeading = document.createElement('h1');
+			this.gameOverHeading.innerHTML = 'CRASHED!!!';
+			this.gameOverHeading.style.textAlign = 'center';
+			this.gameOverHeading.style.color = 'black';
+			parentElement.appendChild(this.gameOverHeading);
+
+			this.restartButton = document.createElement('button');
+			this.restartButton.innerHTML = 'Crash Again?';
+			parentElement.appendChild(this.restartButton);
+
+			this.restartButton.onclick = this.restartGame;
+		}
+
+		this.restartGame = function () {
+			counter = 0;
+			parentElement.removeChild(that.gameOverHeading);
+			parentElement.removeChild(that.restartButton);
+			for (var i = 0; i < that.carArray.length; i++) {
+				that.carArray[i].removeOpponentCar();
+				that.carArray.splice(i, 1);
+			}
+			for (var w = 0; w < that.bulletArray.length; w++) {
+				that.bulletArray[w].removeBullet();
+			}
+			that.car.removePlayerCar();
+			that.startGame();
 		}
 
 		function keyDownHandler(e) {
@@ -239,5 +298,5 @@
 	}
 	//------------------------------->Generate Game from here
 	var parentElement = document.getElementById('app-container');
-	new GameMenu(parentElement).carCreate();
+	new GameMenu(parentElement).startGame();
 })();

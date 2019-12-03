@@ -139,29 +139,26 @@
 			bullet.classList.add('bullet-div');
 			bullet.style.left = this.leftPosB + 'px';
 			bullet.style.top = this.topPosB + 'px';
-			this.element3 = bullet;
 			this.parentElement.appendChild(bullet);
 		}
 
 		this.bulletFire = function () {
 			bullet.style.top = this.bulletSpeed + 'px';
-			this.bulletSpeed -= 1;
+			this.bulletSpeed -= 5;
 		}
 		this.removeBullet = function () {
-			this.parentElement.removeChild(this.element3);
+			this.parentElement.removeChild(bullet);
 		}
 	}
 	//---------------------------------Game Class---------
 	function GameMenu(parentElement) {
 		this.parentElement = parentElement;
-		this.score = 0;
 		this.oc = '';
 		this.moveRoadBy = 10;
 		this.carArray = [];
 		var that = this;
 		this.bulletDiv = '';
 		this.bulletArray = [];
-		this.ammoCount = 6;
 		var id;
 		var id2;
 		var scoreShow;
@@ -170,6 +167,8 @@
 		document.addEventListener("keydown", keyDownHandler.bind(this), false);
 
 		this.startGame = function () {
+			this.ammoCount = 6;
+			this.score = 0;
 			scoreShow = document.createElement('h2');
 			parentElement.appendChild(scoreShow);
 
@@ -195,21 +194,29 @@
 
 		this.checkCollision = function () {
 			for (var i = 0; i < this.carArray.length; i++) {
+				//console.log(this.carArray[i].opponentCarSpeed);
 				if (this.car.leftPos < this.carArray[i].lanePosition + this.carArray[i].width &&
 					this.car.leftPos + this.car.width > this.carArray[i].lanePosition &&
 					this.car.y < this.carArray[i].opponentCarSpeed + this.carArray[i].height &&
 					this.car.y + this.car.height > this.carArray[i].opponentCarSpeed) {
 					this.gameOver();
 				}
-				for (var m = 0; m < this.bulletArray.length; m++) {
-					if (this.bulletArray[m].leftPosB + 30 >= this.carArray[i].leftPos
-						&& this.bulletArray[m].leftPosB <= this.carArray[i].leftPos + 100
-						&& this.bulletArray[m].bulletSpeed <= this.carArray[i].opponentCarSpeed + 100
-						&& this.bulletArray[m].bulletSpeed + 30 >= this.carArray[i].opponentCarSpeed) {
-						console.log('collision detected');
-						this.carArray[m].removeOpponentCar();
-						this.carArray.splice(m, 1);
-						this.bulletArray[m].removeBullet();
+				else {
+					for (var m = 0; m < this.bulletArray.length; m++) {
+						if (this.bulletArray[m].leftPosB + 30 >= this.carArray[i].lanePosition
+							&& this.bulletArray[m].leftPosB <= this.carArray[i].lanePosition + 100
+							&& this.bulletArray[m].bulletSpeed <= this.carArray[i].opponentCarSpeed + 100
+							&& this.bulletArray[m].bulletSpeed + 30 >= this.carArray[i].opponentCarSpeed) {
+							console.log('collision detected');
+							this.carArray[m].removeOpponentCar();
+							this.carArray.splice(i, 1);
+							this.bulletArray[m].removeBullet();
+							this.bulletArray.splice(m, 1);
+						}
+						if (this.bulletArray[m].bulletSpeed < 0) {
+							this.bulletArray[m].removeBullet();
+							this.bulletArray.splice(m, 1);
+						}
 					}
 				}
 			}
@@ -278,12 +285,16 @@
 			counter = 0;
 			parentElement.removeChild(that.gameOverHeading);
 			parentElement.removeChild(that.restartButton);
+			parentElement.removeChild(ammoShow);
+			parentElement.removeChild(scoreShow);
+
 			for (var i = 0; i < that.carArray.length; i++) {
 				that.carArray[i].removeOpponentCar();
 				that.carArray.splice(i, 1);
 			}
 			for (var w = 0; w < that.bulletArray.length; w++) {
 				that.bulletArray[w].removeBullet();
+				this.bulletArray.splice(w, 1);
 			}
 			that.car.removePlayerCar();
 			that.startGame();

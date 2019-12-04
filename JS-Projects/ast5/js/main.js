@@ -6,7 +6,6 @@ function Game() {
         bg.drawBackground();
         fg.drawForeground();
         bird.drawBird();
-        beforeStart.drawGreetingScreen();
         gameOverScreen.drawGameOver();
         pipes.drawPipes();
     }
@@ -20,12 +19,15 @@ function Game() {
     cvs.addEventListener('click', function (event) {
         switch (gameStates.currentState) {
             case gameStates.beforeStart:
+                if (bird.yDest - bird.radius <= 0) return;
                 gameStates.currentState = gameStates.playing;
                 break;
             case gameStates.playing:
                 bird.birdJump();
                 break;
             case gameStates.gameOver:
+                pipes.resetPipes();
+                bird.resetBird();
                 gameStates.currentState = gameStates.beforeStart;
                 break;
         }

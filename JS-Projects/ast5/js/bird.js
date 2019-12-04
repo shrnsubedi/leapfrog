@@ -8,7 +8,7 @@ const bird = {
 
     radius: 12,
     frame: 0,
-    gravity: 0.2,
+    gravity: 0.25,
     jump: 4.6,
     speed: 0,
 
@@ -36,8 +36,8 @@ const bird = {
             }
         }
 
+    },
+    resetBird: function () {
+        this.speed = 0;
     }
-
-
-
 }

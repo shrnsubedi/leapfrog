@@ -1,5 +1,6 @@
 ; (function () {
 	var counter = 0;
+	//------------------------->Player Car Class-----
 	function Player(parentElement) {
 		//Variable Declaration
 		this.leftPos = 250;
@@ -275,7 +276,7 @@
 			parentElement.appendChild(this.gameOverHeading);
 
 			this.restartButton = document.createElement('button');
-			this.restartButton.innerHTML = 'Crash Again?';
+			this.restartButton.innerHTML = 'Play Again?';
 			parentElement.appendChild(this.restartButton);
 
 			this.restartButton.onclick = this.restartGame;

@@ -1,5 +1,7 @@
 class Helix {
-	constructor() {
+	constructor(canvas, ctx) {
+		this.canvas = canvas;
+		this.ctx = ctx;
 		this.phase = 0;
 		this.time = 0.03;
 		this.radiusMax = 7;
@@ -9,36 +11,41 @@ class Helix {
 		this.numStrands = 1;
 		this.yPos;
 		this.xPos = 0
-		this.gapY = 20;
+		this.gapY = 16;
 		this.gapX = 50;
 		setInterval(this.calculate.bind(this), 20);
 	}
 
 	calculate() {
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 		this.xPos = 0
 		this.frames++;
 		this.phase = this.frames * this.time;
 
+
 		for (let i = 0; i < this.cols; i++) {
 			this.xPos = this.xPos + this.gapX;
+			this.colShift = (i * 2 * Math.PI) / 10;
 			for (let j = 0; j < this.rows; j++) {
-				this.yPos = canvas.height / 3 + j * this.gapY;
+				this.yPos = this.canvas.height / 7 + j * this.gapY + Math.sin(this.phase + this.colShift) * 50;
 				this.radiusSizeVar = (Math.cos(this.phase - (j * 0.1) + i) + 1) * 0.5;
-				this.radiusDraw = this.radiusSizeVar * this.radiusMax;
+				this.radiusDrawSize = this.radiusSizeVar * this.radiusMax;
 				this.drawCircle();
 			}
 		}
 	}
 	drawCircle() {
-		ctx.beginPath();
-		ctx.arc(this.xPos, this.yPos, this.radiusDraw, 0, Math.PI * 2, false);
-		ctx.fillStyle = 'white';
-		ctx.fill();
-		ctx.closePath();
+		this.ctx.beginPath();
+		this.ctx.arc(this.xPos, this.yPos, this.radiusDrawSize, 0, Math.PI * 2, false);
+		this.ctx.fillStyle = 'white';
+		this.ctx.fill();
+		this.ctx.closePath();
 	}
 }
-var canvas = document.getElementById('mainCanvas');
-var ctx = canvas.getContext('2d');
+var canvas1 = document.getElementById('mainCanvas');
+var ctx1 = canvas1.getContext('2d');
+var hlx = new Helix(canvas1, ctx1);
 
-var hlx = new Helix()
+var canvas2 = document.getElementById('mainCanvas2');
+var ctx2 = canvas2.getContext('2d');
+var hlx2 = new Helix(canvas2, ctx2);

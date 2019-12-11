@@ -5,8 +5,8 @@ const bg = {
     height: 720,
     xDest: 0,
     yDest: 0,
-    widthDest: 1000,
-    heightDest: 500,
+    widthDest: 1280,
+    heightDest: 720,
 
     drawBackground: function () {
         //console.log(backgroundImage);

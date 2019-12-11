@@ -8,12 +8,14 @@ class Game {
         bg.drawBackground();
         this.hero.drawHero();
     }
+    updateFunction = () => {
+
+    }
+
     loopFunction = () => {
         this.drawFunction();
         requestAnimationFrame(this.loopFunction);
     }
-
-
 }
 
 var gameInstance = new Game;

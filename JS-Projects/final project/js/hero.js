@@ -7,7 +7,6 @@ class Hero {
 				sourceX: 527,
 				sourceY: 95
 			},
-
 			{
 				sourceX: 600,
 				sourceY: 95
@@ -75,16 +74,15 @@ class Hero {
 		];
 		this.animateDown = [
 			{
-				sourceX: 271,
-				sourceY: 0
-			},
-
-			{
-				sourceX: 359,
+				sourceX: 439,
 				sourceY: 8
 			},
 			{
-				sourceX: 439,
+				sourceX: 271,
+				sourceY: 0
+			},
+			{
+				sourceX: 359,
 				sourceY: 8
 			},
 			{
@@ -96,6 +94,66 @@ class Hero {
 				sourceY: 8
 			}
 		];
+		this.attackDown = [
+			{
+				sourceX: 191,
+				sourceY: 255
+			},
+
+			{
+				sourceX: 270,
+				sourceY: 255
+			},
+			{
+				sourceX: 336,
+				sourceY: 255
+			}
+		];
+		this.attackUp = [
+			{
+				sourceX: 440,
+				sourceY: 255
+			},
+
+			{
+				sourceX: 518,
+				sourceY: 255
+			},
+			{
+				sourceX: 582,
+				sourceY: 255
+			}
+		];
+		this.attackRight = [
+			{
+				sourceX: 14,
+				sourceY: 344
+			},
+
+			{
+				sourceX: 100,
+				sourceY: 344
+			},
+			{
+				sourceX: 167,
+				sourceY: 344
+			}
+		];
+		this.attackLeft = [
+			{
+				sourceX: 280,
+				sourceY: 344
+			},
+
+			{
+				sourceX: 335,
+				sourceY: 344
+			},
+			{
+				sourceX: 447,
+				sourceY: 344
+			}
+		];
 		this.animate = this.animateLeft;
 		this.width = 55;
 		this.height = 80;
@@ -103,7 +161,7 @@ class Hero {
 		this.yDest = 420;
 		this.widthDest = 55;
 		this.heightDest = 80;
-		this.heroMoveDist = 10;
+		this.heroMoveDist = 20;
 
 		document.addEventListener("keydown", this.myEventHandler.bind(this), false);
 		document.addEventListener('keyup', (event) => {
@@ -116,55 +174,115 @@ class Hero {
 	myEventHandler = (e) => {
 		const keyCode = e.key;
 		this.keyPressed[keyCode] = true;
-
-		//console.log(this.keyPressed);
+		//Diagnol movement of hero
 		if (this.keyPressed['ArrowUp'] && this.keyPressed['ArrowRight']) {
 			e.preventDefault();
-			this.moveHero(this.heroMoveDist, -this.heroMoveDist);
+			if (this.yDest == 100 || this.xDest == 1010) {
+
+			}
+			else {
+				this.moveHero(this.heroMoveDist, -this.heroMoveDist);
+			}
 		}
+
 		else if (this.keyPressed['ArrowUp'] && this.keyPressed['ArrowLeft']) {
 			e.preventDefault();
-			this.moveHero(-this.heroMoveDist, -this.heroMoveDist);
+			if (this.yDest == 100 || this.xDest == 230) {
+
+			}
+			else {
+				this.moveHero(-this.heroMoveDist, -this.heroMoveDist);
+			}
 		}
+
 		else if (this.keyPressed['ArrowDown'] && this.keyPressed['ArrowRight']) {
 			e.preventDefault();
-			this.moveHero(this.heroMoveDist, this.heroMoveDist);
+			if (this.yDest == 580 || this.xDest == 1010) {
+
+			}
+			else {
+				this.moveHero(this.heroMoveDist, this.heroMoveDist);
+			}
 		}
+
 		else if (this.keyPressed['ArrowDown'] && this.keyPressed['ArrowLeft']) {
 			e.preventDefault();
-			this.moveHero(-this.heroMoveDist, this.heroMoveDist);
+			if (this.yDest == 580 || this.xDest == 230) {
+
+			}
+			else {
+				this.moveHero(-this.heroMoveDist, this.heroMoveDist);
+			}
 		}
+
+		//Straight arrow Key functions with collision detection
 		if (this.keyPressed['ArrowDown']) {
 			e.preventDefault();
-			this.frame++;
-			this.animate = this.animateDown;
-			this.moveHero(0, this.heroMoveDist);
+			if (this.yDest == 580) {
+
+			}
+			else {
+				this.frame++;
+				this.animate = this.animateDown;
+				this.moveHero(0, this.heroMoveDist);
+			}
 		}
 		else if (this.keyPressed['ArrowUp']) {
-			this.frame++;
-			this.animate = this.animateUp;
 			e.preventDefault();
-			this.moveHero(0, -this.heroMoveDist);
+			if (this.yDest == 100) {
+
+			}
+			else {
+				this.frame++;
+				this.animate = this.animateUp;
+				this.moveHero(0, -this.heroMoveDist);
+			}
 		}
 		else if (this.keyPressed['ArrowRight']) {
 			e.preventDefault();
-			this.frame++;
-			this.animate = this.animateRight;
-			this.moveHero(this.heroMoveDist, 0);
+			if (this.xDest == 1010) {
 
+			}
+			else {
+				this.frame++;
+				this.animate = this.animateRight;
+				this.moveHero(this.heroMoveDist, 0);
+			}
 		}
 		else if (this.keyPressed['ArrowLeft']) {
 			e.preventDefault();
+			if (this.xDest == 230) {
+
+			}
+			else {
+				this.frame++;
+				this.animate = this.animateLeft;
+				this.moveHero(-this.heroMoveDist, 0);
+			}
+		}
+		if (this.keyPressed['a']) {
+			e.preventDefault();
+			console.log('a pressed');
+			console.log(this.keyPressed);
+			if (this.animate == this.animateDown) {
+				this.animate = this.attackDown;
+			}
+			else if (this.animate == this.animateUp) {
+				this.animate = this.attackUp;
+			}
+			else if (this.animate == this.animateLeft) {
+				this.animate = this.attackLeft;
+			}
+			else if (this.animate == this.animateRight) {
+				this.animate = this.attackRight;
+			}
 			this.frame++;
-			this.animate = this.animateLeft;
-			this.moveHero(-this.heroMoveDist, 0);
 		}
 	}
 
 	moveHero = (x, y) => {
 		this.xDest += x;
 		this.yDest += y;
-
 	}
 	updateHero = () => {
 

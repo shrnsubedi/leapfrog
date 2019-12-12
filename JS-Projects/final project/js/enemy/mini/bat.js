@@ -1,7 +1,7 @@
 class batEnemy {
     constructor() {
         this.frame = 0;
-        setInterval(this.moveEnemy.bind(this), 75);
+        setInterval(this.animateEnemy.bind(this), 75);
         this.animate = [
             {
                 sourceX: 1,
@@ -31,13 +31,39 @@ class batEnemy {
         this.widthDest = 30;
         this.heightDest = 30;
         this.moveDist = 10;
+        this.heroX;
+        this.heroY;
     }
 
+    getHeroPosition = (heroX, heroY) => {
+        this.heroX = heroX;
+        console.log('Hero position in bat class:' + heroX);
+        this.heroY = heroY;
+    }
+
+    animateEnemy = () => {
+        this.frame++;
+    }
 
     moveEnemy = () => {
-        //this.xDest -= 1;
-        //this.yDest -= 1;
-        this.frame++;
+        if (this.heroX >= this.xDest) {
+            this.xDest++;
+            if (this.heroY > this.yDest) {
+                this.yDest++;
+            }
+            else if (this.heroY < this.yDest) {
+                this.yDest--;
+            }
+        }
+        else if (this.heroX <= this.xDest) {
+            this.xDest--;
+            if (this.heroY > this.yDest) {
+                this.yDest++;
+            }
+            else if (this.heroY < this.yDest) {
+                this.yDest--
+            }
+        }
     }
     drawEnemy = () => {
         if (this.frame == this.animate.length) {

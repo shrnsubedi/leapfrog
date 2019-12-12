@@ -7,6 +7,7 @@ class Game {
     }
 
     createEmeny = () => {
+        //create enemy here in a loop
 
     }
     drawFunction = () => {
@@ -17,13 +18,17 @@ class Game {
     collisionCheck = () => {
         // Check collision with walls and hero attack and other enemies
     }
-
+    broadcastHeroPos = () => {
+        this.bat.getHeroPosition(this.hero.xDest, this.hero.yDest);
+    }
     updateFunction = () => {
-
+        this.bat.moveEnemy();
     }
 
     loopFunction = () => {
+        this.broadcastHeroPos();
         this.drawFunction();
+        this.updateFunction();
         requestAnimationFrame(this.loopFunction);
     }
 }

@@ -74,12 +74,12 @@ class Hero {
 		];
 		this.animateDown = [
 			{
-				sourceX: 439,
-				sourceY: 8
-			},
-			{
 				sourceX: 271,
 				sourceY: 0
+			},
+			{
+				sourceX: 439,
+				sourceY: 8
 			},
 			{
 				sourceX: 359,
@@ -282,7 +282,9 @@ class Hero {
 
 	moveHero = (x, y) => {
 		this.xDest += x;
+		console.log(this.xDest);
 		this.yDest += y;
+		console.log(this.yDest);
 	}
 	updateHero = () => {
 

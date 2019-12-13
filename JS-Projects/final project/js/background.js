@@ -1,4 +1,4 @@
-class bg {
+class Bg {
     sourceX = 0;
     sourceY = 0;
     width = 1280;
@@ -9,7 +9,6 @@ class bg {
     heightDest = 720;
 
     drawBackground = () => {
-        //console.log(backgroundImage);
         ctx.drawImage(backgroundImage, this.sourceX, this.sourceY, this.width, this.height, this.xDest, this.yDest, this.widthDest, this.heightDest);
     }
 }

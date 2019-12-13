@@ -163,6 +163,9 @@ class Hero {
 		this.heightDest = 80;
 		this.heroMoveDist = 20;
 
+		this.heroHealth = 100;
+		this.swordDamage = 5;
+
 		document.addEventListener("keydown", this.myEventHandler.bind(this), false);
 		document.addEventListener('keyup', (event) => {
 			this.frame = 0;
@@ -262,8 +265,6 @@ class Hero {
 		}
 		if (this.keyPressed['a']) {
 			e.preventDefault();
-			console.log('a pressed');
-			console.log(this.keyPressed);
 			if (this.animate == this.animateDown) {
 				this.animate = this.attackDown;
 			}
@@ -282,9 +283,7 @@ class Hero {
 
 	moveHero = (x, y) => {
 		this.xDest += x;
-		console.log(this.xDest);
 		this.yDest += y;
-		console.log(this.yDest);
 	}
 	updateHero = () => {
 

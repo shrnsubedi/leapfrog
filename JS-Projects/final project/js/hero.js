@@ -12,6 +12,10 @@ class Hero {
 				sourceY: 95
 			},
 			{
+				sourceX: 600,
+				sourceY: 95
+			},
+			{
 				sourceX: 16,
 				sourceY: 176
 			},
@@ -290,7 +294,7 @@ class Hero {
 	}
 
 	drawHero = () => {
-		if (this.frame == this.animate.length) {
+		if (this.frame >= this.animate.length - 1) {
 			this.frame = 0;
 		}
 		ctx.drawImage(heroImage, this.animate[this.frame].sourceX, this.animate[this.frame].sourceY, this.width, this.height, this.xDest, this.yDest, this.widthDest, this.heightDest);

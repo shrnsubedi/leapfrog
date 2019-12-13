@@ -1,4 +1,4 @@
-class Bg {
+class Background {
     sourceX = 0;
     sourceY = 0;
     width = 1280;

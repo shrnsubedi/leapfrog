@@ -19,3 +19,11 @@ const gameStates = {
 
 const cvs = document.getElementById('main-canvas');
 const ctx = cvs.getContext('2d');
+
+// var f = new FontFace('Press Start 2P', 'url(fonts/PressStart2P-Regular.ttf)');
+// f.load().then(function () {
+// 	ctx.font = "bold 30px Press Start 2P";
+// });
+
+ctx.font = "bold 20px sans-serif "
+ctx.fillStyle = "white"

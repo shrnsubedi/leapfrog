@@ -1,58 +1,67 @@
 class Game {
     constructor() {
         this.hero = new Hero();
-        this.bg = new Bg();
-        this.bat = new BatEnemy();
+        this.bg = new Background();
         this.go = new GameOver();
+        this.bat;
+        this.batArray = [];
+        setInterval(this.createEnemy.bind(this), 2000);
         this.loopFunction();
     }
-
-    createEmeny = () => {
-        //create enemy here in a loop
-
+    createEnemy = () => {
+        this.bat = new BatEnemy();
+        this.batArray.push(this.bat);
     }
-    drawFunction = () => {
+
+    draw = () => {
         if (gameStates.currentState == gameStates.playing) {
             this.bg.drawBackground();
             this.hero.drawHero();
-            this.bat.drawEnemy();
+            for (let i = 0; i < this.batArray.length; i++) {
+                this.batArray[i].drawEnemy();
+            }
+            ctx.fillText("Health:" + this.hero.heroHealth, 250, 650);
         }
         if (gameStates.currentState == gameStates.gameEnd) {
             this.go.drawGameOver();
         }
-
-
     }
     collisionCheck = () => {
         // Check collision with walls and hero attack and other enemies
     }
 
     broadcastHeroPos = () => {
-        this.bat.getHeroPosition(this.hero.xDest, this.hero.yDest);
-    }
-
-    updateFunction = () => {
-        if (this.bat.state.current == 0) {
-
-        }
-        else {
-            this.bat.moveEnemy();
+        for (let i = 0; i < this.batArray.length; i++) {
+            this.batArray[i].getHeroPosition(this.hero.xDest, this.hero.yDest);
         }
     }
 
-    inflictDame = () => {
-        if (this.bat.state.current == 0) {
+    updateEnemy = () => {
+        for (let i = 0; i < this.batArray.length; i++) {
+            if (this.batArray[i].state.current == this.batArray[i].state.dead) {
 
+            }
+            else {
+                this.batArray[i].moveEnemy();
+            }
         }
-        else {
-            if (this.bat.xDest == this.hero.xDest && this.bat.yDest == this.hero.yDest) {
-                if (this.hero.heroHealth == 0) {
-                    gameStates.currentState = 2
-                }
-                else {
-                    this.hero.heroHealth--;
-                    if (this.hero.keyPressed['a']) {
-                        this.bat.health = this.bat.health - this.hero.swordDamage;
+    }
+
+    inflictDamage = () => {
+        for (let i = 0; i < this.batArray.length; i++) {
+            if (this.batArray[i].state.current == 0) {
+
+            }
+            else {
+                if (this.batArray[i].xDest == this.hero.xDest && this.batArray[i].yDest == this.hero.yDest) {
+                    if (this.hero.heroHealth == 0) {
+                        gameStates.currentState = 2
+                    }
+                    else {
+                        this.hero.heroHealth--;
+                        if (this.hero.keyPressed['a']) {
+                            this.batArray[i].health = this.batArray[i].health - this.hero.swordDamage;
+                        }
                     }
                 }
             }
@@ -60,10 +69,10 @@ class Game {
     }
 
     loopFunction = () => {
+        this.draw();
+        this.updateEnemy();
         this.broadcastHeroPos();
-        this.drawFunction();
-        this.updateFunction();
-        this.inflictDame();
+        this.inflictDamage();
         requestAnimationFrame(this.loopFunction);
     }
 }

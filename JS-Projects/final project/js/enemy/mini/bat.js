@@ -55,7 +55,9 @@ class BatEnemy {
         this.animate = this.animateFly;
         this.width = 15;
         this.height = 15;
-        this.xDest = 318;
+        this.posGen = Math.floor(Math.random() * Math.floor(3));
+        this.posGenValues = [318, 640, 960];
+        this.xDest = this.posGenValues[this.posGen];
         this.yDest = 122;
         this.widthDest = 30;
         this.heightDest = 30;
@@ -99,7 +101,7 @@ class BatEnemy {
         if (this.health == 0) {
             this.state.current = 0;
             this.animate = this.animateDead;
-            if (this.frame == this.animate.length) {
+            if (this.frame < this.animate.length) {
                 this.frame = 4;
                 clearInterval(this.id);
             }

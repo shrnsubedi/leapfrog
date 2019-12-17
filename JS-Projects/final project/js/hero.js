@@ -294,7 +294,7 @@ class Hero {
 	}
 
 	drawHero = () => {
-		if (this.frame >= this.animate.length - 1) {
+		if (this.frame >= this.animate.length) {
 			this.frame = 0;
 		}
 		ctx.drawImage(heroImage, this.animate[this.frame].sourceX, this.animate[this.frame].sourceY, this.width, this.height, this.xDest, this.yDest, this.widthDest, this.heightDest);

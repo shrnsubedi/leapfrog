@@ -35,7 +35,7 @@ const frogImage = new Image();
 frogImage.src = 'img/frogAll.png'; //done
 
 const wormImage = new Image();
-wormImage.src = 'img/wormAll.png';
+wormImage.src = 'img/wormAll.png'; //done
 
 const witchImage = new Image();
 witchImage.src = 'img/witchAll.png';

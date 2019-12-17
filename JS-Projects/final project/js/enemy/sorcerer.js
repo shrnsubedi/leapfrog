@@ -136,6 +136,7 @@ class Sorcerer {
     drawEnemy = () => {
         if (this.health == 0) {
             this.state.current = 0;
+            clearInterval(this.id3);
         }
         else if (this.health != 0) {
             if (this.frame == this.animate.length) {

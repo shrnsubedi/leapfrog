@@ -92,7 +92,7 @@ class BuffTotemEnemy {
             {
                 sourceX: 114,
                 sourceY: 187
-            }
+            },
             {
                 sourceX: 155,
                 sourceY: 187

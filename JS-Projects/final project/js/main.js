@@ -1,36 +1,80 @@
 class Game {
 	constructor() {
+		//object creation for non looping elements
 		this.hero = new Hero();
 		this.bg = new Background();
 		this.go = new GameOver();
 		this.wave = new Wave();
-		this.bat;
-		this.cobra;
-		this.sorcerer;
+		this.waveCount = 2;
+
 		this.batArray = [];
+
+		this.bat;
+		this.noOfbat = 0;
+
+		this.cobra;
+		this.noOfCobra = 0;
+
+		this.spider;
+		this.noOfSpider = 0;
+
+		this.frog;
+		this.noOfFrog = 0;
+
+		this
+
+		this.sorcerer;
+
+
+
+		//flags
 		this.bossSpawnFlag = false;
 		this.bossFlag = false;
 		this.waveDisplayFlag = true;
 		this.count = 0;
 		this.id2 = setInterval(this.createEnemy.bind(this), 2000);
-		this.waveDisplay();
 		this.loopFunction();
 		let that = this;
 	}
 
-	getWaveDetails = () => {
-
-	}
-
 	createEnemy = () => {
-		this.bat = new BatEnemy();
-		this.cobra = new CobraEnemy();
-		this.spider = new SpiderEnemy();
-		this.worm = new WormEnemy();
+		if (this.noOfbat == this.wave.waveInfo[this.waveCount].batCount) {
 
-		this.batArray.push(this.worm);
+		}
+		else {
+			this.bat = new BatEnemy();
+			this.noOfbat++;
+			this.batArray.push(this.bat);
+		}
 
-		if (this.batArray.length == 4) { //condition for boss battles 
+		if (this.noOfCobra == this.wave.waveInfo[this.waveCount].cobraCount) {
+
+		}
+		else {
+			this.cobra = new CobraEnemy();
+			this.noOfCobra++;
+			this.batArray.push(this.cobra);
+		}
+
+		if (this.noOfSpider == this.wave.waveInfo[this.waveCount].spiderCount) {
+
+		}
+		else {
+			this.spider = new SpiderEnemy();
+			this.noOfSpider++;
+			this.batArray.push(this.spider);
+		}
+
+		if (this.noOfFrog == this.wave.waveInfo[this.waveCount].frogCount) {
+
+		}
+		else {
+			this.frog = new FrogEnemy();
+			this.noOfFrog++;
+			this.batArray.push(this.frog);
+		}
+
+		if (this.batArray.length == this.wave.waveInfo[this.waveCount].enemyCount) { //condition for boss battles
 			this.bossFlag = true;
 			this.bossSpawnFlag = true;
 			this.createBoss();
@@ -49,23 +93,21 @@ class Game {
 	}
 
 	waveDisplay = () => {
-		if (this.waveDisplayFlag) {
-			ctx.font = "bold 60px sans-serif ";
-			ctx.fillStyle = "white";
-			ctx.fillText("Wave:" + this.wave.waveNo, 550, 390);
-		}
+		ctx.font = "bold 60px sans-serif ";
+		ctx.fillStyle = "white";
+		ctx.fillText("Wave:" + this.wave.waveNo, 550, 390);
 		setTimeout(() => {
 			this.waveDisplayFlag = false
 		}, 1500);
-
-
 	}
 
 	draw = () => {
 		if (gameStates.currentState == gameStates.playing) {
 			this.bg.drawBackground();
 			this.hero.drawHero();
-			this.waveDisplay();
+			if (this.waveDisplayFlag) {
+				this.waveDisplay();
+			}
 
 			for (let i = 0; i < this.batArray.length; i++) {
 				this.batArray[i].drawEnemy();
@@ -101,11 +143,19 @@ class Game {
 		}
 
 	}
+	resetFunction = () => {
+		this.noOfCobra = 0;
+		this.noOfbat = 0;
+		this.noOfSpider = 0;
+		for (let i = 0; i < this.batArray.length; i++) {
+			this.batArray.splice(0, i + 1);
+		}
+
+	}
 
 	updateEnemy = () => {
 		for (let i = 0; i < this.batArray.length; i++) {
 			if (this.batArray[i].state.current == this.batArray[i].state.dead) {
-				//this.batArray.splice(i, 1);
 
 			}
 			else {
@@ -143,12 +193,20 @@ class Game {
 			}
 		}
 		if (this.bossSpawnFlag) {
+			if (this.sorcerer.health == 0) {
+				this.waveDisplayFlag = true;
+				this.waveCount = this.waveCount + 1;
+				this.wave.waveNo++;
+				this.bossSpawnFlag = false;
+				this.resetFunction();
+				this.id2 = setInterval(this.createEnemy.bind(this), 2000);
+			}
 			if (this.sorcerer.xDest == this.hero.xDest && this.sorcerer.yDest == this.hero.yDest) {
 				if (this.hero.heroHealth == 0) {
 					gameStates.currentState = 2
 				}
 				else {
-					this.hero.heroHealth--;
+					//this.hero.heroHealth--;
 					this.sorcerer.animate = this.sorcerer.animateAttack;
 					if (this.hero.keyPressed['a']) {
 						this.sorcerer.health = this.sorcerer.health - this.hero.swordDamage;

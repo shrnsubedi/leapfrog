@@ -60,7 +60,7 @@ class Sorcerer {
                 sourceY: 200
             }
         ];
-        this.animateAttack = [
+        this.animateDead = [
             {
                 sourceX: 34,
                 sourceY: 20

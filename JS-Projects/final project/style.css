@@ -3,4 +3,33 @@ canvas{
     margin: 0 auto;
     display: block;
     font-family: 'Press Start 2P', cursive;
+    display: none;
+}
+
+#loading-screen{
+    background: url('img/menuscreen.jpg');
+    width: 100%;
+    background-size: 100% 100%;
+    background-repeat:no-repeat;
+    height: 100vh;
+    border: #000000;
+    border-style: solid;
+}
+
+.play{
+    position: absolute;
+    top:40%;
+    left: 40%;
+    width: 300px;
+    height: 60px;
+    border: #000000;
+    border-style: solid;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    font-size: large;
+    font-style: bold;
+}
+
+.play :hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }

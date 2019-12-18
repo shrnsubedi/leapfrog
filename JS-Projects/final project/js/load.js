@@ -5,6 +5,12 @@ backgroundImage.src = 'img/backgroundImage.png';
 const gameOverImg = new Image();
 gameOverImg.src = 'img/gameover.png';
 
+const healthIconImg = new Image();
+healthIconImg.src = 'img/healthicon.png';
+
+const arrowIconImg = new Image();
+arrowIconImg.src = 'img/arrowIcon.png';
+
 //Hero Image
 const heroImage = new Image();
 heroImage.src = 'img/knightAll.png';
@@ -44,6 +50,13 @@ witchImage.src = 'img/witchAll.png';
 const sorcerer = new Image();
 sorcerer.src = 'img/KnightEnemy.png'; //done
 
+const cyclopsImage = new Image();
+cyclopsImage.src = "img/cyclopsAll.png"
+
+//Weapon Hero
+const arrowImage = new Image();
+arrowImage.src = 'img/arrowWeapon.png';
+
 
 const gameStates = {
 	currentState: 1,
@@ -55,6 +68,16 @@ const gameStates = {
 const cvs = document.getElementById('main-canvas');
 const ctx = cvs.getContext('2d');
 
+const menuScreen = document.getElementById('loading-screen');
+const playButton = document.createElement('button');
+menuScreen.appendChild(playButton);
+playButton.classList.add('play');
+playButton.innerHTML = "Start";
+playButton.onclick = function () {
+	var gameInstance = new Game;
+	cvs.style.display = 'block';
+	menuScreen.style.display = 'none';
+}
 // var f = new FontFace('Press Start 2P', 'url(fonts/PressStart2P-Regular.ttf)');
 // f.load().then(function () {
 // 	ctx.font = "bold 30px Press Start 2P";

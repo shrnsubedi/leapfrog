@@ -267,6 +267,7 @@ class Hero {
 				this.moveHero(-this.heroMoveDist, 0);
 			}
 		}
+		//Attacks
 		if (this.keyPressed['a']) {
 			e.preventDefault();
 			if (this.animate == this.animateDown) {
@@ -283,6 +284,7 @@ class Hero {
 			}
 			this.frame++;
 		}
+
 	}
 
 	moveHero = (x, y) => {

@@ -5,7 +5,7 @@ class Game {
 		this.bg = new Background();
 		this.go = new GameOver();
 		this.wave = new Wave();
-		this.waveCount = 2;
+		this.waveCount = 0;
 
 		this.batArray = [];
 
@@ -21,9 +21,12 @@ class Game {
 		this.frog;
 		this.noOfFrog = 0;
 
-		this
-
 		this.sorcerer;
+		this.cyclops;
+
+		this.arrowArray = [];
+		this.arrowCount = 5;
+		this.arrowReloadFlag = true;
 
 
 
@@ -31,7 +34,10 @@ class Game {
 		this.bossSpawnFlag = false;
 		this.bossFlag = false;
 		this.waveDisplayFlag = true;
+		this.arrowShootFlag = false;
+
 		this.count = 0;
+
 		this.id2 = setInterval(this.createEnemy.bind(this), 2000);
 		this.loopFunction();
 		let that = this;
@@ -87,7 +93,8 @@ class Game {
 
 		}
 		else {
-			this.sorcerer = new Sorcerer();
+			//this.sorcerer = new Sorcerer();
+			this.sorcerer = new Cyclops();
 			this.bossFlag = false;
 		}
 	}
@@ -105,16 +112,25 @@ class Game {
 		if (gameStates.currentState == gameStates.playing) {
 			this.bg.drawBackground();
 			this.hero.drawHero();
+
 			if (this.waveDisplayFlag) {
 				this.waveDisplay();
+			}
+			for (let j = 0; j < this.arrowArray.length; j++) {
+				this.arrowArray[j].drawArrow();
 			}
 
 			for (let i = 0; i < this.batArray.length; i++) {
 				this.batArray[i].drawEnemy();
 			}
+
 			ctx.font = "bold 20px sans-serif ";
 			ctx.fillStyle = "white";
-			ctx.fillText("Health:" + this.hero.heroHealth, 250, 650);
+			ctx.fillText(this.hero.heroHealth, 285, 650);
+			ctx.drawImage(healthIconImg, 0, 0, 260, 260, 250, 630, 30, 30);
+
+			ctx.fillText(this.arrowCount, 1010, 650);
+			ctx.drawImage(arrowIconImg, 0, 0, 16, 16, 971, 630, 30, 30);
 
 			if (this.bossSpawnFlag) {
 				this.sorcerer.drawEnemy();
@@ -125,8 +141,22 @@ class Game {
 			this.go.drawGameOver();
 		}
 	}
+
 	collisionCheck = () => {
-		// Check collision with walls and hero attack and other enemies
+		for (let i = 0; i < this.batArray.length; i++) {
+			for (let j = 0; j < this.arrowArray.length; j++) {
+				if (this.batArray[i].xDest == this.arrowArray[j].xDest && this.batArray[i].yDest == this.arrowArray[j].yDest) {
+					if (this.batArray[i].health == 0) {
+
+					}
+					else {
+						this.batArray[i].health = this.batArray[i].health - 20;
+						this.arrowArray.splice(i, 1);
+					}
+				}
+			}
+		}
+
 	}
 
 	broadcastHeroPos = () => {
@@ -147,6 +177,7 @@ class Game {
 		this.noOfCobra = 0;
 		this.noOfbat = 0;
 		this.noOfSpider = 0;
+		this.noOfFrog = 0;
 		for (let i = 0; i < this.batArray.length; i++) {
 			this.batArray.splice(0, i + 1);
 		}
@@ -170,7 +201,37 @@ class Game {
 				this.sorcerer.moveEnemy();
 			}
 		}
+	}
 
+	shootArrow = () => {
+		if (this.arrowReloadFlag == false) {
+
+		}
+		else {
+			if (this.hero.keyPressed['s']) {
+				if (this.arrowCount <= 0) {
+
+				}
+				else {
+					this.arrow = new Arrow();
+					this.arrowArray.push(this.arrow);
+					this.arrowCount--;
+					this.arrowReloadFlag = false;
+					this.updateArrow();
+				}
+			}
+		}
+
+	}
+
+	updateArrow = () => {
+		for (let i = 0; i < this.arrowArray.length; i++) {
+			this.arrowArray[i].getHeroPosition(this.hero.xDest, this.hero.yDest);
+			this.arrowArray[i].getArrowDirection(this.hero.keyPressed);
+			setTimeout(() => {
+				this.arrowReloadFlag = true;
+			}, 1000);
+		}
 	}
 
 	inflictDamage = () => {
@@ -194,12 +255,15 @@ class Game {
 		}
 		if (this.bossSpawnFlag) {
 			if (this.sorcerer.health == 0) {
-				this.waveDisplayFlag = true;
-				this.waveCount = this.waveCount + 1;
-				this.wave.waveNo++;
-				this.bossSpawnFlag = false;
-				this.resetFunction();
-				this.id2 = setInterval(this.createEnemy.bind(this), 2000);
+				setTimeout(() => {
+					this.waveDisplayFlag = true;
+					this.waveCount = this.waveCount + 1;
+					this.wave.waveNo++;
+					this.bossSpawnFlag = false;
+					this.resetFunction();
+					this.id2 = setInterval(this.createEnemy.bind(this), 2000);
+				}, 2000);
+
 			}
 			if (this.sorcerer.xDest == this.hero.xDest && this.sorcerer.yDest == this.hero.yDest) {
 				if (this.hero.heroHealth == 0) {
@@ -221,11 +285,14 @@ class Game {
 		this.updateEnemy();
 		this.broadcastHeroPos();
 		this.inflictDamage();
+		this.shootArrow();
+		this.collisionCheck();
+
 		requestAnimationFrame(this.loopFunction);
 	}
 }
 
-var gameInstance = new Game;
+
 
 
 

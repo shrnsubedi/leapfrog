@@ -4,7 +4,7 @@ class Wave {
         this.waveInfo = [
             {
                 //wave 1
-                enemyCount: 7,
+                enemyCount: 1,
                 batCount: 7,
                 cobraCount: 0,
                 fireECount: 0,
@@ -31,6 +31,7 @@ class Wave {
                 wormCount: 0,
                 fireTCount: 0
             },
+
             {
                 //wave 3
                 enemyCount: 14,
@@ -45,6 +46,7 @@ class Wave {
                 wormCount: 0,
                 fireTCount: 0
             },
+
             {
                 //wave 4
                 enemyCount: 16,

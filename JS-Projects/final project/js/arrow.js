@@ -1,4 +1,4 @@
-//Note:
+//Note:----------------------------
 //Create Sprites for each direction
 
 class Arrow {

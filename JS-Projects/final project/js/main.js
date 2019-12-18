@@ -5,6 +5,8 @@ class Game {
 		this.bg = new Background();
 		this.go = new GameOver();
 		this.wave = new Wave();
+		this.powerup = new Powerup();
+
 		this.waveCount = 0;
 
 		this.batArray = [];
@@ -112,6 +114,8 @@ class Game {
 		if (gameStates.currentState == gameStates.playing) {
 			this.bg.drawBackground();
 			this.hero.drawHero();
+
+			this.powerup.drawPower();
 
 			if (this.waveDisplayFlag) {
 				this.waveDisplay();
@@ -221,7 +225,6 @@ class Game {
 				}
 			}
 		}
-
 	}
 
 	updateArrow = () => {

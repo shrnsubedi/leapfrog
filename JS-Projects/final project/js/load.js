@@ -17,38 +17,38 @@ heroImage.src = 'img/knightAll.png';
 
 //Mini enemies
 const batImage = new Image();
-batImage.src = 'img/bat.png'; //done
+batImage.src = 'img/bat.png';
 
 const cobraImage = new Image();
-cobraImage.src = 'img/CobraAll.png'; //done
+cobraImage.src = 'img/CobraAll.png';
 
 const spiderImage = new Image();
-spiderImage.src = 'img/spiderSheet.png'; //done
+spiderImage.src = 'img/spiderSheet.png';
 
 const buffTImage = new Image();
-buffTImage.src = 'img/bufftotemAll.png'; //done
+buffTImage.src = 'img/bufftotemAll.png';
 
 const impImage = new Image();
-impImage.src = 'img/impAll.png'; //done
+impImage.src = 'img/impAll.png';
 
 const fireTImage = new Image();
-fireTImage.src = 'img/fireTotemAll.png'; //done
+fireTImage.src = 'img/fireTotemAll.png';
 
 const fireEImage = new Image();
-fireEImage.src = 'img/fireElementalAll.png'; //done
+fireEImage.src = 'img/fireElementalAll.png';
 
 const frogImage = new Image();
-frogImage.src = 'img/frogAll.png'; //done
+frogImage.src = 'img/frogAll.png';
 
 const wormImage = new Image();
-wormImage.src = 'img/wormAll.png'; //done
+wormImage.src = 'img/wormAll.png';
 
-const witchImage = new Image();
+const witchImage = new Image(); //Left to implement
 witchImage.src = 'img/witchAll.png';
 
 //Boss enemies
 const sorcerer = new Image();
-sorcerer.src = 'img/KnightEnemy.png'; //done
+sorcerer.src = 'img/KnightEnemy.png';
 
 const cyclopsImage = new Image();
 cyclopsImage.src = "img/cyclopsAll.png"
@@ -56,6 +56,10 @@ cyclopsImage.src = "img/cyclopsAll.png"
 //Weapon Hero
 const arrowImage = new Image();
 arrowImage.src = 'img/arrowWeapon.png';
+
+//Powerup
+const powerupImage = new Image();
+powerupImage.src = 'img/itemPack.png';
 
 
 const gameStates = {

@@ -164,11 +164,12 @@ class Hero {
 		this.xDest = 670;
 		this.yDest = 420;
 		this.widthDest = 55;
-		this.heightDest = 80;
+		this.heightDest = 60;
 		this.heroMoveDist = 20;
 
 		this.heroHealth = 100;
 		this.swordDamage = 5;
+		this.arrowDamage = 20;
 
 		document.addEventListener("keydown", this.myEventHandler.bind(this), false);
 		document.addEventListener('keyup', (event) => {

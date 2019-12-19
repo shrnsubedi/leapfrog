@@ -51,7 +51,16 @@ const sorcerer = new Image();
 sorcerer.src = 'img/KnightEnemy.png';
 
 const cyclopsImage = new Image();
-cyclopsImage.src = "img/cyclopsAll.png"
+cyclopsImage.src = "img/cyclopsAll.png";
+
+const minotaurImage = new Image();
+minotaurImage.src = 'img/minotaurAll.png';
+
+const gladiatorImage = new Image();
+gladiatorImage.src = 'img/gladiatorAll.png';
+
+const dwarfImage = new Image();
+dwarfImage.src = 'img/dwarfAll.png';
 
 //Weapon Hero
 const arrowImage = new Image();

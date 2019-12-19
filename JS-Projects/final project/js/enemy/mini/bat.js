@@ -114,5 +114,4 @@ class BatEnemy {
 		}
 		ctx.drawImage(batImage, this.animate[this.frame].sourceX, this.animate[this.frame].sourceY, this.width, this.height, this.xDest, this.yDest, this.widthDest, this.heightDest);
 	}
-
 }

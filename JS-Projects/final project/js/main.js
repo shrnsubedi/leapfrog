@@ -59,8 +59,6 @@ class Game {
 		//potion Flags
 		this.invinciblePotionFlag = false;
 
-		this.count = 0;
-		this.healthReduceCounter = 0;
 		//Interval to generate enemies every 2 seconds
 		this.id2 = setInterval(this.createEnemy.bind(this), 2000);
 
@@ -206,6 +204,8 @@ class Game {
 				case 9:
 					this.sorcerer = new DwarfEnemy();
 					break;
+				case 10:
+					gameStates.currentState = gameStates.GameOver;
 			}
 			this.bossFlag = false;
 		}
@@ -481,8 +481,6 @@ class Game {
 
 	//Check damage infliction on mini enemies and bosses
 	inflictDamage = () => {
-		this.healthReduceCounter++;
-		console.log(this.healthReduceCounter);
 		for (let i = 0; i < this.batArray.length; i++) {
 			if (this.batArray[i].state.current == 0) {
 
@@ -520,9 +518,8 @@ class Game {
 					gameStates.currentState = 2
 				}
 				else {
-					if (this.healthReduceCounter % 100) {
-						this.hero.health = this.hero.health - this.sorcerer.damageDone;
-					}
+
+					this.hero.health = this.hero.health - this.sorcerer.damageDone;
 					this.sorcerer.animate = this.sorcerer.animateAttack;
 					if (this.hero.keyPressed['a']) {
 						this.sorcerer.health = this.sorcerer.health - this.hero.swordDamage;

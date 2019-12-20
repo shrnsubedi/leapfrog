@@ -173,7 +173,7 @@ class Hero {
 		this.bottomBoundary = cvs.height - 120;
 
 		this.heroHealth = 100;
-		this.swordDamage = 0.75;
+		this.swordDamage = 5;
 		this.arrowDamage = 20;
 
 		this.xp = 0;

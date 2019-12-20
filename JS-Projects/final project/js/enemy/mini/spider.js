@@ -110,10 +110,9 @@ class SpiderEnemy {
         if (this.health == 0) {
             this.state.current = 0;
             this.animate = this.animateDead;
-            if (this.frame >= this.animate.length) {
-                this.frame = this.animate.length - 1;
-                clearInterval(this.id);
-            }
+            this.frame = this.animate.length - 1;
+            clearInterval(this.id);
+
         }
         else if (this.health != 0) {
             if (this.frame >= this.animate.length) {

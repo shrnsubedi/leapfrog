@@ -4,7 +4,7 @@ class Wave { //Control wave properties from here ie enemy count, type etc
 		this.waveInfo = [
 			{
 				//wave 1
-				enemyCount: 1,
+				enemyCount: 7,
 				batCount: 7,
 				cobraCount: 0,
 				fireECount: 0,

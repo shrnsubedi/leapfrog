@@ -103,7 +103,7 @@ class BatEnemy {
 			this.state.current = 0;
 			this.animate = this.animateDead;
 			if (this.frame >= this.animate.length) {
-				this.frame = 4; //this.animate.length -1 in place of 4?
+				this.frame = 4;
 				clearInterval(this.id);
 			}
 		}

@@ -108,7 +108,7 @@ class FiretEnemy {
 		this.heroX;
 		this.heroY;
 
-		this.health = 20;
+		this.health = 60;
 	}
 
 	getHeroPosition = (heroX, heroY) => {

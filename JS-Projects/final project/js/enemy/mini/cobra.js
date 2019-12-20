@@ -95,7 +95,7 @@ class CobraEnemy {
         this.heroX;
         this.heroY;
 
-        this.health = 20;
+        this.health = 25;
     }
 
     getHeroPosition = (heroX, heroY) => {

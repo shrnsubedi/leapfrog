@@ -167,9 +167,16 @@ class Hero {
 		this.heightDest = 60;
 		this.heroMoveDist = 20;
 
+		this.leftBoundary = 230;
+		this.rightBoundary = 1010;
+		this.topBoundary = 100;
+		this.bottomBoundary = cvs.height - 120;
+
 		this.heroHealth = 100;
-		this.swordDamage = 5;
+		this.swordDamage = 0.75;
 		this.arrowDamage = 20;
+
+		this.xp = 0;
 
 		document.addEventListener("keydown", this.myEventHandler.bind(this), false);
 		document.addEventListener('keyup', (event) => {
@@ -185,7 +192,7 @@ class Hero {
 		//Diagnol movement of hero
 		if (this.keyPressed['ArrowUp'] && this.keyPressed['ArrowRight']) {
 			e.preventDefault();
-			if (this.yDest == 100 || this.xDest == 1010) {
+			if (this.yDest == this.topBoundary || this.xDest == this.rightBoundary) {
 
 			}
 			else {
@@ -195,7 +202,7 @@ class Hero {
 
 		else if (this.keyPressed['ArrowUp'] && this.keyPressed['ArrowLeft']) {
 			e.preventDefault();
-			if (this.yDest == 100 || this.xDest == 230) {
+			if (this.yDest == this.topBoundary || this.xDest == this.leftBoundary) {
 
 			}
 			else {
@@ -205,7 +212,7 @@ class Hero {
 
 		else if (this.keyPressed['ArrowDown'] && this.keyPressed['ArrowRight']) {
 			e.preventDefault();
-			if (this.yDest == 580 || this.xDest == 1010) {
+			if (this.yDest == this.bottomBoundary || this.xDest == this.rightBoundary) {
 
 			}
 			else {
@@ -215,7 +222,7 @@ class Hero {
 
 		else if (this.keyPressed['ArrowDown'] && this.keyPressed['ArrowLeft']) {
 			e.preventDefault();
-			if (this.yDest == 580 || this.xDest == 230) {
+			if (this.yDest == this.bottomBoundary || this.xDest == this.leftBoundary) {
 
 			}
 			else {
@@ -226,7 +233,7 @@ class Hero {
 		//Straight arrow Key functions with collision detection
 		if (this.keyPressed['ArrowDown']) {
 			e.preventDefault();
-			if (this.yDest == 580) {
+			if (this.yDest == this.bottomBoundary) {
 
 			}
 			else {
@@ -237,7 +244,7 @@ class Hero {
 		}
 		else if (this.keyPressed['ArrowUp']) {
 			e.preventDefault();
-			if (this.yDest == 100) {
+			if (this.yDest == this.topBoundary) {
 
 			}
 			else {
@@ -248,7 +255,7 @@ class Hero {
 		}
 		else if (this.keyPressed['ArrowRight']) {
 			e.preventDefault();
-			if (this.xDest == 1010) {
+			if (this.xDest == this.rightBoundary) {
 
 			}
 			else {
@@ -259,7 +266,7 @@ class Hero {
 		}
 		else if (this.keyPressed['ArrowLeft']) {
 			e.preventDefault();
-			if (this.xDest == 230) {
+			if (this.xDest == this.leftBoundary) {
 
 			}
 			else {

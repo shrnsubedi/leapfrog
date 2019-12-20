@@ -122,18 +122,19 @@ class Gladiator {
 		];
 
 		this.animate = this.animateMoveRight;
-		this.width = 78;
-		this.height = 70;
+		this.width = 34;
+		this.height = 28;
 		this.posGen = 318;
 		this.xDest = this.posGen;
 		this.yDest = 122;
-		this.widthDest = 80;
-		this.heightDest = 80;
+		this.widthDest = 70;
+		this.heightDest = 70;
 		this.moveDist = 20;
 		this.heroX;
 		this.heroY;
 
-		this.health = 60;
+		this.health = 70;
+		this.damageDone = 17;
 	}
 
 	getHeroPosition = (heroX, heroY) => {

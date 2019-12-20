@@ -80,6 +80,8 @@ const gameStates = {
 
 const cvs = document.getElementById('main-canvas');
 const ctx = cvs.getContext('2d');
+cvs.width = 1280 || window.innerWidth;
+cvs.height = 720 || window.innerHeight;
 
 const menuScreen = document.getElementById('loading-screen');
 const playButton = document.createElement('button');
@@ -87,14 +89,24 @@ menuScreen.appendChild(playButton);
 playButton.classList.add('play');
 playButton.innerHTML = "Start";
 playButton.onclick = function () {
-	var gameInstance = new Game;
+	let gameInstance = new Game;
 	cvs.style.display = 'block';
 	menuScreen.style.display = 'none';
 }
-// var f = new FontFace('Press Start 2P', 'url(fonts/PressStart2P-Regular.ttf)');
-// f.load().then(function () {
-// 	ctx.font = "bold 30px Press Start 2P";
-// });
+
+const instructionButton = document.createElement('button');
+menuScreen.appendChild(instructionButton);
+instructionButton.classList.add('help');
+instructionButton.innerHTML = "Instructions";
+instructionButton.onclick = function () {
+	const helpScreen = document.createElement('div');
+	menuScreen.appendChild(helpScreen);
+	helpScreen.classList.add('help-screen');
+	helpScreen.style.display = 'block';
+	helpScreen.onclick = function () {
+		helpScreen.style.display = 'none';
+	}
+}
 
 ctx.font = "bold 20px sans-serif ";
 ctx.fillStyle = "white";

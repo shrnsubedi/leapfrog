@@ -159,6 +159,7 @@ class Minotaur {
     this.heroY;
 
     this.health = 60;
+    this.damageDone = 10;
   }
 
   getHeroPosition = (heroX, heroY) => {

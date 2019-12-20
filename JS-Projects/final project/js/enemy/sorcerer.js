@@ -98,7 +98,8 @@ class Sorcerer {
 		this.heroX;
 		this.heroY;
 
-		this.health = 60;
+		this.health = 80;
+		this.damageDone = 14;
 	}
 
 	getHeroPosition = (heroX, heroY) => {

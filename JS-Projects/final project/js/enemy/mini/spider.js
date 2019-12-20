@@ -71,7 +71,7 @@ class SpiderEnemy {
         this.heroX;
         this.heroY;
 
-        this.health = 20;
+        this.health = 22;
     }
 
     getHeroPosition = (heroX, heroY) => {

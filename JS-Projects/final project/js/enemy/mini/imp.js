@@ -100,7 +100,7 @@ class ImpEnemy {
         this.heroX;
         this.heroY;
 
-        this.health = 20;
+        this.health = 40;
     }
 
     getHeroPosition = (heroX, heroY) => {

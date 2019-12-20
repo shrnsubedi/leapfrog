@@ -95,7 +95,7 @@ class WitchEnemy {
         this.heroX;
         this.heroY;
 
-        this.health = 20;
+        this.health = 50;
     }
 
     getHeroPosition = (heroX, heroY) => {

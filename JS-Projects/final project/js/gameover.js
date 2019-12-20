@@ -6,8 +6,8 @@ class GameOver {
 		this.height = 1280;
 		this.xDest = 0;
 		this.yDest = 0;
-		this.widthDest = 1280;
-		this.heightDest = 720;
+		this.widthDest = cvs.width;
+		this.heightDest = cvs.height;
 	}
 
 	drawGameOver = () => {

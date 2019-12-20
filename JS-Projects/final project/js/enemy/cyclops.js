@@ -179,7 +179,8 @@ class Cyclops {
 		this.heroX;
 		this.heroY;
 
-		this.health = 60;
+		this.health = 120;
+		this.damageDone = 22;
 	}
 
 	getHeroPosition = (heroX, heroY) => {

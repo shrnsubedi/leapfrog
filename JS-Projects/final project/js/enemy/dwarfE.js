@@ -149,7 +149,8 @@ class DwarfEnemy {
         this.heroX;
         this.heroY;
 
-        this.health = 60;
+        this.health = 100;
+        this.damageDone = 20;
     }
 
     getHeroPosition = (heroX, heroY) => {

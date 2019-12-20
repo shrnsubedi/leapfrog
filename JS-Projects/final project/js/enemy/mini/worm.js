@@ -53,7 +53,7 @@ class WormEnemy {
 		this.animate = this.animateWormAttack;
 		this.width = 24;
 		this.height = 17;
-		this.xDest = Math.floor((Math.random() * 1000) + 200);
+		this.xDest = Math.floor((Math.random() * 700) + 210);
 		this.yDest = Math.floor((Math.random() * 500) + 100);
 		this.widthDest = 30;
 		this.heightDest = 30;
@@ -74,26 +74,7 @@ class WormEnemy {
 	}
 
 	moveEnemy = () => {
-		// if (this.heroX >= this.xDest) {
-		//     this.xDest++;
-		//     this.animate = this.animateMoveRight;
-		//     if (this.heroY > this.yDest) {
-		//         this.yDest++;
-		//     }
-		//     else if (this.heroY < this.yDest) {
-		//         this.yDest--;
-		//     }
-		// }
-		// else if (this.heroX <= this.xDest) {
-		//     this.xDest--;
-		//     this.animate = this.animateMoveLeft;
-		//     if (this.heroY > this.yDest) {
-		//         this.yDest++;
-		//     }
-		//     else if (this.heroY < this.yDest) {
-		//         this.yDest--
-		//     }
-		// }
+
 	}
 
 	drawEnemy = () => {

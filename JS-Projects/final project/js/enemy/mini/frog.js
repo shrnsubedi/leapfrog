@@ -71,7 +71,7 @@ class FrogEnemy {
         this.heroX;
         this.heroY;
 
-        this.health = 20;
+        this.health = 30;
     }
 
     getHeroPosition = (heroX, heroY) => {

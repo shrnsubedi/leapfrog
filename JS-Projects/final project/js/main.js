@@ -46,6 +46,7 @@ class Game {
 		//Arrow variables
 		this.arrowArray = [];
 		this.arrowCount = 5;
+		this.maxArrows = 5;
 
 		//flags
 		this.bossSpawnFlag = false;
@@ -59,6 +60,7 @@ class Game {
 		this.invinciblePotionFlag = false;
 
 		this.count = 0;
+		this.healthReduceCounter = 0;
 		//Interval to generate enemies every 2 seconds
 		this.id2 = setInterval(this.createEnemy.bind(this), 2000);
 
@@ -243,11 +245,15 @@ class Game {
 
 			ctx.font = "bold 20px sans-serif ";
 			ctx.fillStyle = "white";
-			ctx.fillText(this.hero.heroHealth, 285, 650);
-			ctx.drawImage(healthIconImg, 0, 0, 260, 260, 250, 630, 30, 30);
+			ctx.fillText(parseInt(this.hero.heroHealth), cvs.width - 1000, cvs.height - 60);
+			ctx.drawImage(healthIconImg, 0, 0, 260, 260, cvs.width - 1034, cvs.height - 80, 30, 30);
 
-			ctx.fillText(this.arrowCount, 1010, 650);
-			ctx.drawImage(arrowIconImg, 0, 0, 16, 16, 971, 630, 30, 30);
+			ctx.fillText(this.arrowCount, cvs.width - 260, cvs.height - 60);
+			ctx.drawImage(arrowIconImg, 0, 0, 16, 16, cvs.width - 300, cvs.height - 80, 30, 30);
+
+			ctx.font = "bold 20px sans-serif ";
+			ctx.fillStyle = "white";
+			ctx.fillText('XP:' + this.hero.xp, cvs.width - 1000, cvs.height - 10);
 
 			if (this.bossSpawnFlag) {
 				this.sorcerer.drawEnemy();
@@ -256,6 +262,7 @@ class Game {
 
 		if (gameStates.currentState == gameStates.gameEnd) {
 			this.go.drawGameOver();
+			document.addEventListener('click', this.restartFunction.bind(this), false);
 		}
 	}
 
@@ -279,19 +286,21 @@ class Game {
 			}
 		}
 		//Check collision with boss enemy and the arrow
-		for (let j = 0; j < this.arrowArray.length; j++) {
-			if (
-				this.sorcerer.xDest < this.arrowArray[j].xDest + this.arrowArray[j].widthDest &&
-				this.sorcerer.xDest + this.sorcerer.widthDest > this.arrowArray[j].xDest &&
-				this.sorcerer.yDest < this.arrowArray[j].yDest + this.arrowArray[j].heightDest &&
-				this.sorcerer.yDest + this.sorcerer.heightDest > this.arrowArray[j].yDest) {
-				if (this.sorcerer.health == 0) {
-					this.bossIsDead();
-					break;
-				}
-				else {
-					this.sorcerer.health = this.sorcerer.health - this.hero.arrowDamage;
-					this.arrowArray.pop();
+		if (this.bossSpawnFlag) {
+			for (let j = 0; j < this.arrowArray.length; j++) {
+				if (
+					this.sorcerer.xDest < this.arrowArray[j].xDest + this.arrowArray[j].widthDest &&
+					this.sorcerer.xDest + this.sorcerer.widthDest > this.arrowArray[j].xDest &&
+					this.sorcerer.yDest < this.arrowArray[j].yDest + this.arrowArray[j].heightDest &&
+					this.sorcerer.yDest + this.sorcerer.heightDest > this.arrowArray[j].yDest) {
+					if (this.sorcerer.health == 0) {
+						this.bossIsDead();
+						break;
+					}
+					else {
+						this.sorcerer.health = this.sorcerer.health - this.hero.arrowDamage;
+						this.arrowArray.pop();
+					}
 				}
 			}
 		}
@@ -327,7 +336,7 @@ class Game {
 						break;
 
 					case 3:
-						this.arrowCount = 5;
+						this.arrowCount = this.maxArrows;
 						break;
 				}
 				this.powerUpArray.splice(k, 1);
@@ -363,6 +372,43 @@ class Game {
 		this.noOfWitch = 0;
 		this.noOfImp = 0;
 		this.powerUpno = 2;
+		this.healthReduceCounter = 0;
+		for (let i = 0; i < this.batArray.length; i++) {
+			this.batArray.splice(0, i + 1);
+		}
+	}
+
+	//Call function after game ends to restart the game
+	restartFunction = () => {
+		gameStates.currentState = gameStates.playing;
+		document.removeEventListener('click', this.resetFunction.bind(this), false);
+		this.noOfCobra = 0;
+		this.noOfbat = 0;
+		this.noOfSpider = 0;
+		this.noOfFrog = 0;
+		this.noOfFireT = 0;
+		this.noOfFireE = 0;
+		this.noOfBuffT = 0;
+		this.noOfWorm = 0;
+		this.noOfWitch = 0;
+		this.noOfImp = 0;
+		this.powerUpno = 2;
+		this.waveCount = 0;
+		this.wave.waveNo = 1;
+
+		this.bossSpawnFlag = false;
+		this.bossFlag = false;
+		this.waveDisplayFlag = true;
+		this.arrowShootFlag = false;
+		this.arrowReloadFlag = true;
+		this.powerUpFlag = false;
+
+		this.hero.health = 100;
+		this.arrowCount = 5;
+		this.maxArrows = 5;
+
+		this.healthReduceCounter = 0;
+
 		for (let i = 0; i < this.batArray.length; i++) {
 			this.batArray.splice(0, i + 1);
 		}
@@ -435,6 +481,8 @@ class Game {
 
 	//Check damage infliction on mini enemies and bosses
 	inflictDamage = () => {
+		this.healthReduceCounter++;
+		console.log(this.healthReduceCounter);
 		for (let i = 0; i < this.batArray.length; i++) {
 			if (this.batArray[i].state.current == 0) {
 
@@ -449,7 +497,7 @@ class Game {
 
 						}
 						else {
-							this.hero.heroHealth--;
+							this.hero.heroHealth = this.hero.heroHealth - 0.15;
 						}
 						if (this.hero.keyPressed['a']) {
 							this.batArray[i].health = this.batArray[i].health - this.hero.swordDamage;
@@ -472,7 +520,9 @@ class Game {
 					gameStates.currentState = 2
 				}
 				else {
-					//this.hero.heroHealth--;
+					if (this.healthReduceCounter % 100) {
+						this.hero.health = this.hero.health - this.sorcerer.damageDone;
+					}
 					this.sorcerer.animate = this.sorcerer.animateAttack;
 					if (this.hero.keyPressed['a']) {
 						this.sorcerer.health = this.sorcerer.health - this.hero.swordDamage;
@@ -484,6 +534,11 @@ class Game {
 
 	//This function is called if the health of boss is zero
 	bossIsDead = () => {
+		this.hero.xp = this.hero.xp + 100 + this.batArray.length * 20;
+		if (this.hero.xp % 200) {
+			this.hero.health += 10;
+			this.maxArrows += 1;
+		}
 		this.waveDisplayFlag = true; //Display the wave no
 		this.waveCount = this.waveCount + 1;
 		this.wave.waveNo++;

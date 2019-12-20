@@ -1,6 +1,3 @@
-//Note:----------------------------
-//Create Sprites for each direction
-
 class Arrow {
 	constructor() {
 		this.sourceX = 0;

@@ -299,9 +299,6 @@ class Hero {
 		this.xDest += x;
 		this.yDest += y;
 	}
-	updateHero = () => {
-
-	}
 
 	drawHero = () => {
 		if (this.frame >= this.animate.length) {

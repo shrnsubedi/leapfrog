@@ -78,11 +78,13 @@ const gameStates = {
 	gameEnd: 2
 }
 
+//Get canvas context and set width and height
 const cvs = document.getElementById('main-canvas');
 const ctx = cvs.getContext('2d');
 cvs.width = 1280 || window.innerWidth;
 cvs.height = 720 || window.innerHeight;
 
+//Create menu screen buttons
 const menuScreen = document.getElementById('loading-screen');
 const playButton = document.createElement('button');
 menuScreen.appendChild(playButton);
@@ -94,6 +96,7 @@ playButton.onclick = function () {
 	menuScreen.style.display = 'none';
 }
 
+//Instructions screen
 const instructionButton = document.createElement('button');
 menuScreen.appendChild(instructionButton);
 instructionButton.classList.add('help');

@@ -1,100 +1,320 @@
 <html>
-
-<head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Assignment Page</title>
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="./resources/css/main.css" />
+  </head>
+  <body>
+    <div class="box" style="margin: 20px;">
+      <div class="box">
+        <figure>
+          <img
+            src="./resources/image/logo_leapfrog.png"
+            width="138px"
+            height="30px"
+          />
+          <span style="font-weight: bold; color: gray;">Projects</span>
+        </figure>
+      </div>
+      <div class="box">
+        <div class="tab">
+          <button
+            class="tablinks active is-hoverable"
+            onclick="openTab(event, 'design')"
+          >
+            Design Assignment
+          </button>
+          <button class="tablinks is-hoverable" onclick="openTab(event, 'js')">
+            Javascript Assignment
+          </button>
+        </div>
 
-<body>
-    <style>
-        table,
-        th,
-        td {
-            border: 1px solid black;
-            padding: 15px;
+        <div id="design" class="tabcontent" style="display: block;">
+          <table class="table is-striped is-bordered is-fullwidth is-hoverable">
+            <tr style="width: 100%;">
+              <th></th>
+              <th>Title</th>
+              <th>Demo</th>
+              <th>Code</th>
+            </tr>
+
+            <tr>
+              <td>
+                <figure class="image is-4by3">
+                  <img src="./resources/image/design1.png" />
+                </figure>
+              </td>
+              <td>Design Assignment 1: 1A-home-search</td>
+              <td>
+                <a
+                  href="https://shrnsubedi.github.io/leapfrog/Design/Assignment%201/index.html"
+                  >Design Assignment 1-DEMO</a
+                >
+              </td>
+              <td>
+                <a
+                  href="https://github.com/shrnsubedi/leapfrog/tree/master/Design/Assignment%201"
+                  >Design Assignment 1-CODE</a
+                >
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <figure class="image is-4by3">
+                  <img
+                    src="./resources/image/design2.png"
+                    class="project-thumbnail"
+                  />
+                </figure>
+              </td>
+              <td>Design Assignment 2: 1A-settings</td>
+              <td>
+                <a
+                  href="https://shrnsubedi.github.io/leapfrog/Design/Assignment%202/index.html"
+                  >Design Assignment 2-DEMO</a
+                >
+              </td>
+              <td>
+                <a
+                  href="https://github.com/shrnsubedi/leapfrog/tree/master/Design/Assignment%202"
+                  >Design Assignement 2-CODE</a
+                >
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <figure class="image is-4by3">
+                  <img
+                    src="./resources/image/design-final.png"
+                    class="project-thumbnail"
+                  />
+                </figure>
+              </td>
+              <td>Design Final Project:Static</td>
+              <td>
+                <a
+                  href="https://shrnsubedi.github.io/leapfrog/Design/Final%20Project/Static/index.html"
+                  >Design Project:Static-DEMO</a
+                >
+              </td>
+              <td>
+                <a
+                  href="https://github.com/shrnsubedi/leapfrog/tree/master/Design/Final%20Project/Static"
+                  >Design Project:Static-CODE</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <figure class="image is-128x128">
+                  <img
+                    src="./resources/image/design-final-r.png"
+                    class="project-thumbnail"
+                  />
+                </figure>
+              </td>
+              <td>Design Final Project:Responsive</td>
+              <td>
+                <a
+                  href="https://shrnsubedi.github.io/leapfrog/Design/Final%20Project/Dynamic/index.html"
+                  >Design Project:Responsive-DEMO</a
+                >
+              </td>
+              <td>
+                <a
+                  href="https://github.com/shrnsubedi/leapfrog/tree/master/Design/Final%20Project/Dynamic"
+                  >Design Project:Responsive-CODE</a
+                >
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <div id="js" class="tabcontent">
+          <table class="table is-striped is-bordered is-fullwidth is-hoverable">
+            <tr style="width: 100%;">
+              <th></th>
+              <th>Title</th>
+              <th>Demo</th>
+              <th>Code</th>
+            </tr>
+            <tr>
+              <td>
+                <figure class="image is-4by3">
+                  <img
+                    src="./resources/image/carousel.png"
+                    class="project-thumbnail"
+                  />
+                </figure>
+              </td>
+              <td>JS Assignment 1: Image Slider</td>
+              <td>
+                <a
+                  href="https://shrnsubedi.github.io/leapfrog/JS-Projects/ast1/index.html"
+                  >Image Slider-DEMO</a
+                >
+              </td>
+              <td>
+                <a
+                  href="https://github.com/shrnsubedi/leapfrog/tree/master/JS-Projects/ast1"
+                  >Image Slider-CODE</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <figure class="image is-4by3">
+                  <img
+                    src="./resources/image/carousel-hold.png"
+                    class="project-thumbnail"
+                  />
+                </figure>
+              </td>
+              <td>JS Assignment 2: Image Slider with hold times</td>
+              <td>
+                <a
+                  href="https://shrnsubedi.github.io/leapfrog/JS-Projects/ast2/index.html"
+                  >Image Slider 2-DEMO</a
+                >
+              </td>
+              <td>
+                <a
+                  href="https://github.com/shrnsubedi/leapfrog/tree/master/JS-Projects/ast2"
+                  >Image Slider 2-CODE</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <figure class="image is-4by3">
+                  <img
+                    src="./resources/image/ant.png"
+                    class="project-thumbnail"
+                  />
+                </figure>
+              </td>
+              <td>JS Assignment 3: Box Collision and Ant Smasher</td>
+              <td>
+                <a
+                  href="https://shrnsubedi.github.io/leapfrog/JS-Projects/ast3/index.html"
+                  >Ant Smasher-DEMO</a
+                >
+              </td>
+              <td>
+                <a
+                  href="https://github.com/shrnsubedi/leapfrog/tree/master/JS-Projects/ast3"
+                  >Ant Smasher-CODE</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <figure class="image is-4by3">
+                  <img
+                    src="./resources/image/car-game.png"
+                    class="project-thumbnail"
+                  />
+                </figure>
+              </td>
+              <td>JS Assignment 4: Car Lane Game with Bullet Implementation</td>
+              <td>
+                <a
+                  href="https://shrnsubedi.github.io/leapfrog/JS-Projects/ast4/index.html"
+                  >Car Lane-DEMO</a
+                >
+              </td>
+              <td>
+                <a
+                  href="https://github.com/shrnsubedi/leapfrog/tree/master/JS-Projects/ast4"
+                  >Car Lane-CODE</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <figure class="image is-4by3">
+                  <img src="./resources/image/flappy.png" />
+                </figure>
+              </td>
+              <td>JS Assignment 5: Flappy Bird</td>
+              <td>
+                <a
+                  href="https://shrnsubedi.github.io/leapfrog/JS-Projects/ast5/index.html"
+                  >Flappy Bird-DEMO</a
+                >
+              </td>
+              <td>
+                <a
+                  href="https://github.com/shrnsubedi/leapfrog/tree/master/JS-Projects/ast5"
+                  >Flappy Bird-CODE</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <figure class="image is-4by3">
+                  <img src="./resources/image/helix.png" />
+                </figure>
+              </td>
+              <td>JS Assignment 6: Helix Animation</td>
+              <td>
+                <a
+                  href="https://shrnsubedi.github.io/leapfrog/JS-Projects/ast6/index.html"
+                  >Helix-DEMO</a
+                >
+              </td>
+              <td>
+                <a
+                  href="https://github.com/shrnsubedi/leapfrog/tree/master/JS-Projects/ast6"
+                  >Helix-CODE</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <figure class="image is-128x128">
+                  <img src="./resources/image/js_final.png" />
+                </figure>
+              </td>
+              <td>JS Final Project</td>
+              <td>
+                <a
+                  href="https://shrnsubedi.github.io/leapfrog/JS-Projects/final%20project/index.html"
+                  >Final Project-DEMO</a
+                >
+              </td>
+              <td>
+                <a
+                  href="https://github.com/shrnsubedi/leapfrog/tree/master/JS-Projects/final%20project"
+                  >Final Project-CODE</a
+                >
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script>
+      function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
         }
-
-        th {
-            text-align: left;
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
-    </style>
-    <h2>Assignment Page</h2>
-    <table>
-        <tr style="width: 100%">
-            <th>Title</th>
-            <th>Demo</th>
-            <th>Code</th>
-        </tr>
-        <tr>
-            <td>Github Assignment: Hosted Assignments List page</td>
-            <td><a href="https://shrnsubedi.github.io/leapfrog/">Hosted Assignments List page-DEMO</a></td>
-            <td><a href="https://github.com/shrnsubedi/leapfrog/blob/master/index.html">Hosted Assignments List
-                    page-CODE</a></td>
-        </tr>
-        <tr>
-            <td>Design Assignment 1: 1A-home-search.jpg</td>
-            <td><a href="https://shrnsubedi.github.io/leapfrog/Design/Assignment%201/index.html">Design Assignment
-                    1-DEMO</a></td>
-            <td><a href="https://github.com/shrnsubedi/leapfrog/tree/master/Design/Assignment%201">Design Assignment
-                    1-CODE</a></td>
-        </tr>
-        <tr>
-            <td>Design Assignment 2: 1A-settings.jpg</td>
-            <td><a href="https://shrnsubedi.github.io/leapfrog/Design/Assignment%202/index.html">Design Assignment
-                    2-DEMO</a></td>
-            <td><a href="https://github.com/shrnsubedi/leapfrog/tree/master/Design/Assignment%202">Design Assignement
-                    2-CODE</a></td>
-        </tr>
-        <tr>
-            <td>Design Final Project:Static</td>
-            <td><a href="https://shrnsubedi.github.io/leapfrog/Design/Final%20Project/Static/index.html">Design
-                    Project:Static-DEMO</a></td>
-            <td><a href="https://github.com/shrnsubedi/leapfrog/tree/master/Design/Final%20Project/Static">Design
-                    Project:Static-CODE</a></td>
-        </tr>
-        <tr>
-            <td>Design Final Project:Responsive</td>
-            <td><a href="https://shrnsubedi.github.io/leapfrog/Design/Final%20Project/Dynamic/index.html">Design
-                    Project:Responsive-DEMO</a></td>
-            <td><a href="https://github.com/shrnsubedi/leapfrog/tree/master/Design/Final%20Project/Dynamic">Design
-                    Project:Responsive-CODE</a></td>
-        </tr>
-        <tr>
-            <td>JS Assignment 1: Image Slider</td>
-            <td><a href="https://shrnsubedi.github.io/leapfrog/JS-Projects/ast1/index.html">Image Slider-DEMO</a></td>
-            <td><a href="https://github.com/shrnsubedi/leapfrog/tree/master/JS-Projects/ast1">Image Slider-CODE</a></td>
-        </tr>
-        <tr>
-            <td>JS Assignment 2: Image Slider with hold times</td>
-            <td><a href="https://shrnsubedi.github.io/leapfrog/JS-Projects/ast2/index.html">Image Slider 2-DEMO</a></td>
-            <td><a href="https://github.com/shrnsubedi/leapfrog/tree/master/JS-Projects/ast2">Image Slider 2-CODE</a></td>
-        </tr>
-        <tr>
-            <td>JS Assignment 3: Box Collision and Ant Smasher</td>
-            <td><a href="https://shrnsubedi.github.io/leapfrog/JS-Projects/ast3/index.html">Ant Smasher-DEMO</a></td>
-            <td><a href="https://github.com/shrnsubedi/leapfrog/tree/master/JS-Projects/ast3">Ant Smasher-CODE</a></td>
-        </tr>
-        <tr>
-            <td>JS Assignment 4: Car Lane Game with Bullet Implementation </td>
-            <td><a href="https://shrnsubedi.github.io/leapfrog/JS-Projects/ast4/index.html">Car Lane-DEMO</a></td>
-            <td><a href="https://github.com/shrnsubedi/leapfrog/tree/master/JS-Projects/ast4">Car Lane-CODE</a></td>
-        </tr>
-        <tr>
-            <td>JS Assignment 5: Flappy Bird</td>
-            <td><a href="https://shrnsubedi.github.io/leapfrog/JS-Projects/ast5/index.html">Flappy Bird-DEMO</a></td>
-            <td><a href="https://github.com/shrnsubedi/leapfrog/tree/master/JS-Projects/ast5">Flappy Bird-CODE</a></td>
-        </tr>
-        <tr>
-            <td>JS Assignment 6: Helix Animation</td>
-            <td><a href="https://shrnsubedi.github.io/leapfrog/JS-Projects/ast6/index.html">Helix-DEMO</a></td>
-            <td><a href="https://github.com/shrnsubedi/leapfrog/tree/master/JS-Projects/ast6">Helix-CODE</a></td>
-        </tr>
-        <tr>
-            <td>JS Final Project</td>
-            <td><a href="https://shrnsubedi.github.io/leapfrog/JS-Projects/final%20project/index.html">Final Project-DEMO</a></td>
-            <td><a href="https://github.com/shrnsubedi/leapfrog/tree/master/JS-Projects/final%20project">Final Project-CODE</a></td>
-        </tr>
-
-    </table>
-</body>
-
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+    </script>
+  </body>
 </html>
